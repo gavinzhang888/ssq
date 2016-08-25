@@ -19,7 +19,7 @@ class UserView < ApplicationRecord
   belongs_to :user, class_name: "::User", foreign_key: "user_id"
 
   DefaultViews = {
-    "Api::V1::Client" => [:name, :category_id, :phone, :email, :address, :created_at],
+    "Api::V1::Client" => [:name, :phone, :email, :address, :created_at],
     "Notification" => [:content, :link, :readed, :category, :level, :creator_id, :created_at]
   }
 
