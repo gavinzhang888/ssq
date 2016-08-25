@@ -1,0 +1,12 @@
+<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+  {{ current_view.name }} <span class="caret"></span>
+</button>
+<ul class="dropdown-menu" role="menu" >
+  <li>
+    <a href="javascript:void(0);" ng-click="changeUserView()"><%= I18n.t :"page.static.default_view" %></a>
+  </li>
+  <li class="divider" ng-show="user_views.length != 0"></li>
+  <li ng-repeat="user_view in user_views">
+    <a href="javascript:void(0);" ng-click="changeUserView(user_view)">{{ user_view.name }}</a>
+  </li>
+</ul>

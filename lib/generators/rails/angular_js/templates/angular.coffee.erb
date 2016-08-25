@@ -1,0 +1,43 @@
+@app.controller "<%= file_name.camelize %>Ctrl",["$scope", "<%= class_name.singularize %>", "Restangular", "$rootScope", "$location", "$routeParams", ($scope, <%= class_name.singularize %>, Restangular, $rootScope, $location, $routeParams) ->
+  # index
+  $scope.getData = () ->
+    $rootScope.search = {}
+    $scope.tableSearch("<%= file_name %>")
+
+  $scope.getPage = (page) ->
+    $rootScope.current_page = page
+    $scope.tableSearch("<%= file_name %>", page)
+
+  # show
+  $scope.get<%= class_name.singularize %> = (id) ->
+    if id
+      <%= class_name.singularize %>.one(id).get().then (res) ->
+        $scope.<%= file_name.singularize %> = res
+    else
+      Restangular.one('<%= file_name %>').customGET("new").then (res) ->
+        $scope.<%= file_name.singularize %> = res
+    return
+
+  $scope.<%= file_name.singularize %>Init = () ->
+    $scope.get<%= class_name.singularize %>($routeParams.id)
+
+  #form
+  $scope.<%= file_name.singularize %>FormInit = () ->
+    $scope.get<%= class_name.singularize %>($routeParams.id)
+
+  $scope.submit<%= class_name.singularize %> = (data) ->
+    if data.id
+      data.put().then (res) ->
+        unless res.meta.errors
+          $location.path("/<%= file_name %>")
+        else
+          $scope.data_errors = res.meta.errors
+    else
+      <%= class_name.singularize %>.post(data).then (res) ->
+        unless res.meta.errors
+          $location.path("/<%= file_name %>")
+        else
+          $scope.data_errors = res.meta.errors
+
+    return
+]

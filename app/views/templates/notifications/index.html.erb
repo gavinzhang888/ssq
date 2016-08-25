@@ -1,0 +1,138 @@
+<ol class="breadcrumb white">
+  <li><a href="/"><%= I18n.t :"page.static.home" %></a></li>
+  <li class="active"><%= I18n.t :"notification.modelname" %> <span ng-bind="notifications.meta.total"></span> <%= I18n.t :"page.static.unit" %></li>
+</ol>
+<div class="action-bar">
+  <div class="action-btns form-inline">
+    <!-- <a ng-href="/notifications/new" class="btn btn-default"><i class="fa fa-plus"></i></a> -->
+    <!-- <a ng-href="/notifications/new" class="btn btn-default"><i class="fa fa-pencil-square-o"></i></a> -->
+    <!-- <a href="javascript:void(0);" class="btn btn-default" ng-click="deleteAllAlert(notifications,notification)"><i class="fa fa-trash-o"></i></a> -->
+    <!-- <a href="javascript:void(0);" ng-click="refreshPage()" class="btn btn-default"><i class="fa fa-refresh"></i></a> -->
+    <a href="javascript:void(0);" print-div="#print-area" class="btn btn-default"><i class="fa fa-print"></i></a>
+    <button class="btn btn-default" data-toggle="collapse" data-target="#table-search" data-animate="" data-play="bounceInUp"><i class="fa fa-search"></i></button>
+    <div class="btn-group">
+      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+        <%= I18n.t :"page.static.more" %> <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+        <li><a href="javascript:void(0);" ng-click="setPerpage(15)"><%= I18n.t :"page.static.per_page" %> 15 <%= I18n.t :"page.static.unit" %></a></li>
+        <li><a href="javascript:void(0);" ng-click="setPerpage(50)"><%= I18n.t :"page.static.per_page" %> 50 <%= I18n.t :"page.static.unit" %></a></li>
+        <li class="divider"></li>
+        <!-- <li><a ng-href="/properties?t=notification" target="_blank"><%= I18n.t :"page.static.custom" %></a></li> -->
+        <li><a href="javascript:void(0);" ng-click="export()"><%= I18n.t :"page.static.export" %></a></li>
+        <li><a href="javascript:void(0);" print-div="#print-area"><%= I18n.t :"page.static.print" %></a></li>
+      </ul>
+    </div>
+    <div ng-include="'/templates/user_views.html'" class="btn-group" ng-controller="UserViewsCtrl" ng-init="getCurrentUserViews('Notification')">
+    </div>
+    <a ng-href="#" ng-click='getNotificationCategory(0)'class="btn btn-default">主要</a>
+    <a ng-href="#" ng-click='getNotificationCategory(1)' class="btn btn-default">社交</a>
+    <a ng-href="#" ng-click='getNotificationCategory(2)'class="btn btn-default">推广</a>
+  </div>
+
+  <div class="willPaginate"
+   data-params="willPaginateCollection"
+   data-on-click="getPage"
+   data-config="willPaginateConfig"
+   ng-if="notifications.meta.total > notifications.meta.perpage">
+  </div>
+</div>
+<div class="panel panel-default table-responsive" id="print-area">
+  <div class="panel-body">
+    <table class="table table-striped table-hover table-auto" ng-init="getData()">
+      <thead>
+        <tr>
+          <th>
+            <div class="btn-group">
+               <a href="#" ng-click="initSelectField()" data-toggle="dropdown">
+                 <em class="fa fa-th-list"></em>
+               </a>
+               <ul role="menu" class="dropdown-menu">
+                 <li><input type="checkbox" ng-model="select_fields['0']" ng-click="select_all_fields()"/><label><%= I18n.t :"page.static.show_and_hidden" %></label></li>
+                 <li class="divider"></li>
+                 <!-- <li><input type="checkbox" ng-model="select_fields['level']" ng-checked="isShow('level')" /><span><%= I18n.t :"notification.level" %></span></li> -->
+                 <li><input type="checkbox" ng-model="select_fields['content']" ng-checked="isShow('content')" /><span><%= I18n.t :"notification.content" %></span></li>
+                 <li><input type="checkbox" ng-model="select_fields['category']" ng-checked="isShow('category')"/><span><%= I18n.t :"notification.category" %></span></li>
+                 <li><input type="checkbox" ng-model="select_fields['creator_id']" ng-checked="isShow('creator_id')" /><span><%= I18n.t :"notification.creator_id" %></span></li>
+                 <li><input type="checkbox" ng-model="select_fields['readed']" ng-checked="isShow('readed')" /><span><%= I18n.t :"notification.readed" %></span></li>
+                 <li><input type="checkbox" ng-model="select_fields['created_at']" ng-checked="isShow('created_at')" /><span><%= I18n.t :"notification.created_at" %></span></li>
+                 <li class="divider"></li>
+                 <li>
+                   <button class="btn btn-success btn-xs" ng-click="openModal()"><%= I18n.t :"page.static.new" %></button>
+                   <button class="btn btn-info btn-xs" ng-show="current_view.id" ng-click="openModal(current_view.id)"><%= I18n.t :"page.static.update" %></button>
+                   <button class="btn btn-danger btn-xs" ng-show="current_view.id" ng-click="deleteView()"><%= I18n.t :"page.static.delete" %></button>
+                 </li>
+               </ul>
+            </div>
+          </th>
+          <!-- <th><%= I18n.t :"page.static.num" %></th> -->
+          <!-- <th><input type="checkbox" ng-model="select_datas[0]" ng-click="select_items(notifications)"/></th> -->
+          <th ng-show="isShow('level')"><%= I18n.t :"notification.level" %></th>
+          <th ng-show="isShow('content')"><%= I18n.t :"notification.content" %></th>
+          <th ng-show="isShow('category')"><%= I18n.t :"notification.category" %></th>
+          <th ng-show="isShow('creator_id')"><%= I18n.t :"notification.creator_id" %></th>
+          <th ng-show="isShow('readed')"><%= I18n.t :"notification.readed" %></th>
+          <th ng-show="isShow('created_at')"><%= I18n.t :"notification.created_at" %></th>
+        </tr>
+        <tr class="table-search" class="collapse" id="table-search">
+          <td></td>
+          <!-- <td></td> -->
+          <td ng-show="isShow('level')"><%= search_number(field: "level") %></td>
+          <td ng-show="isShow('content')"><%= search_text(field: "content") %></td>
+          <td ng-show="isShow('category')"><%= search_number(field: "category") %></td>
+          <td ng-show="isShow('creator_id')"><%= search_number(field: "creator_id") %></td>
+          <td ng-show="isShow('readed') "><%= search_number(field: "readed") %></td>
+          <td ng-show="isShow('created_at')"><%= search_date(field: "created_at") %></td>
+        </tr>
+      </thead>
+      <tbody>
+       <tr ng-repeat="notification in notifications">
+         <td>
+           <!-- <span ng-bind="$index + 1"></span> -->
+           <div class="btn-group operate">
+              <a href="#" ng-click="$event.preventDefault()" data-toggle="dropdown">
+                <em class="fa fa-sliders"></em>
+              </a>
+              <ul role="menu" class="dropdown-menu">
+                <!-- <li>
+                  <a ng-href="/notifications/{{notification.id}}/edit">
+                    <i class="fa fa-pencil-square-o"></i>
+                    <span><%= I18n.t :"page.static.edit" %></span>
+                  </a>
+                </li> -->
+                <li>
+                  <a href="javascript:void(0);" ng-click="deleteAlert(notifications,notification)">
+                    <i class="fa fa-trash-o"></i>
+                    <span><%= I18n.t :"page.static.delete" %></span>
+                  </a>
+                </li>
+                <!-- <li>
+                  <a ng-href="/notifications/{{notification.id}}">
+                    <i class="fa fa-newspaper-o"></i>
+                    <span><%= I18n.t :"page.static.detail" %></span>
+                  </a>
+                </li> -->
+              </ul>
+           </div>
+         </td>
+         <!-- <td ng-bind="$index + 1"></td> -->
+         <!-- <td><input type="checkbox" ng-model="select_datas[notification.id]" ng-click="select_item(notifications)" /></td> -->
+         <td ng-show="isShow('level')"><i class="icon-bulb text-{{notification.level}}"></i></td>
+         <td ng-show="isShow('content')"><a ng-href="#" ng-click ="contentLink(notification)">{{ notification.content }}</a></td>
+         <td ng-show="isShow('category')">{{ notification.category }}</td>
+         <td ng-show="isShow('creator_id')">{{ notification.creator }}</td>
+         <td ng-show="isShow('readed')">{{ notification.readed_name }}</td>
+         <td ng-show="isShow('created_at')">{{ notification.created_at }}</td>
+       </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="action-bar">
+  <div class="willPaginate"
+   data-params="willPaginateCollection"
+   data-on-click="getPage"
+   data-config="willPaginateConfig"
+   ng-if="notifications.meta.total > notifications.meta.perpage">
+  </div>
+</div>

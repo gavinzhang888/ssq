@@ -1,0 +1,72 @@
+<form name="opportunityForm" ng-init="opportunityFormInit()" ng-submit="submitOpportunity(opportunity)">
+<div class="panel"  ng-class="data_errors ? 'panel-danger' : 'panel-default'">
+  <div class="panel-heading">
+    <div class="panel-title" ng-if="!opportunity.id"><%= I18n.t :"page.static.new" %><%= I18n.t :"opportunity.modelname" %></div>
+    <div class="panel-title" ng-if="opportunity.id"><%= I18n.t :"page.static.edit" %><%= I18n.t :"opportunity.modelname" %></div>
+  </div>
+  <div class="panel-body">
+    <div class="row" ng-if="data_errors">
+      <div class="col-sm-12 error-flash">
+        <ul>
+          <li ng-repeat="error in data_errors">{{error}}</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label class="control-label"><%= I18n.t :"opportunity.code" %><span class="red">*</span></label>
+          <input type="text" name="code" ng-model="opportunity.code" class="form-control input-width" />
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label class="control-label"><%= I18n.t :"opportunity.name" %><span class="red">*</span></label>
+          <input type="text" name="name" ng-model="opportunity.name" class="form-control input-width" />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label class="control-label"><%= I18n.t :"opportunity.client_id" %></label>
+          <!-- <input type="text" name="client_id" ng-model="opportunity.client_id" class="form-control input-width" /> -->
+          <%= grace_selection(class_name: "opportunity",
+                    resource_name: "clients",
+                    ng_model: "opportunity",
+                    relation_ship: "client",
+                    columns: ["name"]) %>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label class="control-label"><%= I18n.t :"opportunity.amount" %></label>
+          <input type="text" name="amount" ng-model="opportunity.amount" class="form-control input-width" />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label class="control-label"><%= I18n.t :"opportunity.status_id" %></label>
+          <input type="text" name="status_id" ng-model="opportunity.status_id" class="form-control input-width" />
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label class="control-label"><%= I18n.t :"opportunity.remark" %></label>
+          <input type="text" name="remark" ng-model="opportunity.remark" class="form-control input-width" />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="form-group">
+          <button class="btn btn-success" ng-class="{'disabled': !opportunity}"><%= I18n.t :"page.static.submit" %></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</form>

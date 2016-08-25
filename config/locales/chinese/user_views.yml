@@ -1,0 +1,10 @@
+zh-CN:
+  user_view:
+    modelname: 视图
+    formname: 视图
+    name: 视图名称
+
+  activerecord:
+    attributes:
+      user_view:
+        name: 视图名称

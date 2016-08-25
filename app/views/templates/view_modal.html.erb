@@ -1,0 +1,27 @@
+<div class="modal-header">
+    <h3 class="modal-title" ng-if="!user_view.id"><%= I18n.t :"page.static.new" %><%= I18n.t :"user_view.modelname" %></h3>
+    <h3 class="modal-title" ng-if="user_view.id"><%= I18n.t :"page.static.update" %><%= I18n.t :"user_view.modelname" %></h3>
+</div>
+<form form-vaildation name="userViewForm" ng-init="userViewFormInit()" ng-submit="submitUserView(user_view)">
+  <div class="modal-body" ng-controller="UserViewsCtrl">
+    <div class="row" ng-if="data_errors">
+      <div class="col-sm-12 error-flash">
+        <ul>
+          <li ng-repeat="error in data_errors">{{error}}</li>
+        </ul>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="form-group">
+          <label class="control-label"><%= I18n.t :"user_view.name" %>：</label>
+          <input type="text" name="name" ng-model="user_view.name" class="form-control" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-success"><%= I18n.t :"page.static.submit" %></button>
+    <a class="btn btn-warning" ng-click="modalCancel()"><%= I18n.t :"page.static.cancel" %></a>
+  </div>
+</form>

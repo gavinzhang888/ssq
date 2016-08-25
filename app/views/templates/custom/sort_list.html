@@ -1,0 +1,5 @@
+<ng-switch on="currentSortFiled == filed.name">
+{{ filed.value }}&nbsp;&nbsp;
+  <i ng-switch-default class="fa fa-sort" ></i>
+  <i ng-switch-when="true" class="fa" ng-class="{'fa-sort-desc': currentSort == 'DESC', 'fa-sort-asc': currentSort == 'ASC'}"></i>
+</ng-switch>

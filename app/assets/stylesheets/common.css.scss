@@ -1,0 +1,165 @@
+.gray{
+	color: #aaa;
+	a{
+		color: #aaa;
+	}
+}
+.light{
+	color: #ccc;
+}
+.red{
+	color: #ea4335;
+}
+.blue{
+	color: #4285f4;
+}
+.green{
+	color: #34a853;
+}
+.yellow{
+	color: #fbbc04;
+}
+
+.breadcrumb {
+  &.white {
+    background-color: white;
+  }
+}
+
+.action-bar{
+	// padding: 14px;
+	height: 50px;
+	background: #f5f6f9;
+	// border-bottom: 1px solid #c8ccd5;
+	position: relative;
+	overflow: visible;
+	.action-btns{
+		left: 0;
+		position: absolute;
+		.btn-default{
+			color: #666;
+		}
+	}
+	.action-line{
+		color: #ccc;
+		padding: 0 3px;
+	}
+	.willPaginate{
+		right: 0;
+		position: absolute;
+		.pagination{
+			margin: 0;
+			li{
+				cursor: pointer;
+			}
+		}
+	}
+}
+
+.input-width{
+	width: 80%;
+}
+
+.table-cus {
+	tr {
+		th {
+			background-color: #FCFCFC;
+			width: 15%;
+		}
+		td {
+			width: 35%;
+		}
+	}
+}
+
+.font12{
+	font-size: 13px;
+}
+
+.linking{
+	text-align: center;
+	margin-top: 1em;
+	font-size: 12px;
+	a{
+		color: #ccc;
+	}
+}
+
+.error-box{
+	font-size: 12px;
+	color: #e66141;
+	font-weight: bold;
+}
+
+.error-flash{
+	ul {
+		margin-bottom: 15px;
+		li {
+			color: #D74D49;
+			font-weight: bold;
+			list-style-type: decimal;
+		}
+	}
+}
+
+.table-hover {
+	.operate {
+		display: none;
+	}
+  .operate, .btn-group{
+		a {
+			color: #3a3f51;
+		}
+		span {
+			margin-left:5px;
+		}
+		input,button {
+			margin-left: 15px;
+		}
+	}
+  > tbody > tr:hover {
+    .btn-group{
+			display: block;
+		}
+  }
+}
+
+.table-show {
+	.operate {
+		display: none;
+	}
+	a {
+		color: #3a3f51;
+	}
+	td:hover {
+		.operate{
+			display: block;
+		}
+	}
+}
+
+.table-auto {
+	white-space:nowrap;
+}
+
+.table-search {
+	display: none;
+	input {
+		margin: 8px 0;
+	}
+}
+
+
+// 列表排序
+.sort-th {
+	cursor:pointer;
+	i.fa-sort {
+		color: #edf1f2;
+	}
+}
+
+//  通知
+.uk-notify-top-right {
+	left: auto;
+	right: 0px;
+}

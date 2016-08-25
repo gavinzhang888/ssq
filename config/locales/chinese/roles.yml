@@ -1,0 +1,14 @@
+zh-CN:
+  role:
+    modelname: 权限组
+    formname: 权限组
+    name: 权限组名
+    detail: 权限组明细
+    created_at: 创建于
+    updated_at: 更新于
+
+  activerecord:
+    attributes:
+      role:
+        name: 权限组名
+        detail: 权限

@@ -1,0 +1,74 @@
+zh-CN:
+  page:
+    static:
+      home: 首页
+      num: 序号
+      operate: 操作
+      create: 创建
+      edit: 编辑
+      new: 新建
+      update: 更新
+      delete: 删除
+      detail: 详情
+      submit: 提交
+      more: 更多
+      custom: 自定义
+      export: 导出
+      created_at: 创建于
+      updated_at: 更新于
+      creator: 创建人
+      unit: 条
+      basic_information: 基本信息
+      histories: 历史记录
+      per_page: 一页显示
+      print: 打印
+      cancel: 取消
+      ok: 确定
+      show_and_hidden: 显示隐藏栏目
+      subtotal: 小计
+      total: 总计
+      default_view: 默认视图
+    setting:
+      setting: 设置
+      theme: 主题
+      page_setting: 页面设置
+      wide_adjust: 页面宽度调整
+      collapse_memu: 收起菜单栏
+      float_memu: 浮动菜单栏
+      memu_hover_show: 菜单栏悬停显示
+
+  errors:
+    format: ! '%{attribute}%{message}'
+    messages:
+      accepted: 必须是可被接受的
+      blank: 不能为空
+      present: 必须是空白
+      confirmation: 与确认值不匹配
+      empty: 不能留空
+      equal_to: 必须等于 %{count}
+      even: 必须为双数
+      exclusion: 是保留关键字
+      greater_than: 必须大于 %{count}
+      greater_than_or_equal_to: 必须大于或等于 %{count}
+      inclusion: 不包含于列表中
+      invalid: 是无效的
+      less_than: 必须小于 %{count}
+      less_than_or_equal_to: 必须小于或等于 %{count}
+      not_a_number: 不是数字
+      not_an_integer: 必须是整数
+      odd: 必须为单数
+      record_invalid: ! '验证失败: %{errors}'
+      restrict_dependent_destroy:
+        one: 由于 %{record} 需要此记录，所以无法移除记录
+        many: 由于 %{record} 需要此记录，所以无法移除记录
+      taken: 已经被使用
+      too_long:
+        one: 过长（最长为一个字符）
+        other: 过长（最长为 %{count} 个字符）
+      too_short:
+        one: 过短（最短为一个字符）
+        other: 过短（最短为 %{count} 个字符）
+      wrong_length:
+        one: 长度非法（必须为一个字符）
+        other: 长度非法（必须为 %{count} 个字符）
+      other_than: 长度非法（不可为 %{count} 个字符

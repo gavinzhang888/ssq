@@ -1,0 +1,33 @@
+zh-CN:
+  double_ball:
+    modelname: 双色球
+    formname: 双色球
+    number: 期数
+    date: 开奖日期
+    red_1: 红球
+    red_2: 红球
+    red_3: 红球
+    red_4: 红球
+    red_5: 红球
+    red_6: 红球
+    blue: 篮球
+    amount: 投注总额
+    grade_1: 一等
+    amount_1: 一等金额
+    grade_2: 二等
+    amount_2: 二等金额
+    grade_3: 三等
+    amount_3: 三等金额
+    grade_4: 四等
+    amount_4: 四等金额
+    grade_5: 五等
+    amount_5: 五等金额
+    grade_6: 六等
+    amount_6: 六等金额
+    created_at: 创建于
+    updated_at: 更新于
+    creator: 创建人
+
+  activerecord:
+    attributes:
+      api/v1/double_ball:

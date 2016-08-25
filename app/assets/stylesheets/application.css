@@ -1,0 +1,23 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * --- Angle Main Stylesheet
+ *
+ *= require angle/app
+ *
+ * --- Assets paths redefinition
+ *
+ *= require fonts
+ *= require vendor.assets
+ *= require tables
+ *= require common
+ *= require histories
+ *= require grace-selection
+ *= require sweetalert/dist/sweetalert.css
+ // --- DatetimePicker
+ *= require eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min
+ // --- xEditable
+ //= require x-editable/dist/angular-xeditable/css/xeditable
+ *
+ */

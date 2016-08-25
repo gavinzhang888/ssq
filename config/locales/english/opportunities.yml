@@ -1,0 +1,23 @@
+en:
+  opportunity:
+    modelname: Opportunity
+    formname: Opportunity
+    name: Name
+    code: Code
+    client_id: Client
+    amount: Amount
+    status_id: Status
+    remark: Remark
+    created_at: Created At
+    updated_at: Updated At
+    creator_id: Creator
+
+  activerecord:
+    attributes:
+      api/v1/opportunity:
+        name: Name
+        code: Code
+        client_id: Client
+        amount: Amount
+        status_id: Status
+        remark: Remark

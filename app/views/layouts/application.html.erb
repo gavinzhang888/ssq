@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="cn">
+
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+   <meta name="description" content="项目管理系统">
+   <meta name="keywords" content="项目管理系统">
+   <title>项目管理系统</title>
+   <!-- =============== VENDOR STYLES ===============-->
+   <%= stylesheet_link_tag 'base' %>
+   <!-- =============== VIEW VENDOR STYLES ===============-->
+   <%= stylesheet_link_tag params[:controller] unless params[:controller] == "templates" %>
+   <!-- =============== APP STYLES ===============-->
+   <%= stylesheet_link_tag 'application', media: 'all', id: "maincss" %>
+   <%= stylesheet_link_tag asset_path("angle/themes/#{current_user.theme}.css") if user_signed_in? && current_user.theme.present? %>
+   <%= csrf_meta_tags %>
+   <base href="/">
+</head>
+
+<body ng-app="hydra" ng-controller="RootCtrl" ng-class="toggleStates">
+  <% if user_signed_in? %>
+    <div class="wrapper" ng-init="currentUser(<%= current_user.id %>)">
+      <!-- top navbar-->
+      <header class="topnavbar-wrapper">
+         <%= render partial: "layouts/partials/topnavbar" %>
+      </header>
+      <!-- sidebar-->
+      <aside class="aside">
+         <%= render partial: "layouts/partials/sidebar" %>
+      </aside>
+      <!-- offsidebar-->
+      <aside class="offsidebar hide">
+         <%= render partial: "layouts/partials/offsidebar" %>
+      </aside>
+      <!-- Main section-->
+      <section>
+         <!-- Page content-->
+         <div class="content-wrapper">
+            <%= yield %>
+         </div>
+      </section>
+      <!-- Page footer-->
+      <footer>
+         <%= render partial: "layouts/partials/footer" %>
+      </footer>
+    </div>
+  <% else %>
+    <%= yield %>
+  <% end %>
+  <!-- =============== VENDOR SCRIPTS ===============-->
+  <%= javascript_include_tag 'base' %>
+  <!-- =============== APP SCRIPTS ===============-->
+  <%= javascript_include_tag 'application' %>
+  <!-- =============== VIEW VENDOR SCRIPTS ===============-->
+  <%= javascript_include_tag params[:path] if params[:path].present? %>
+
+
+  <%= yield :body_area %>
+</body>
+</html>

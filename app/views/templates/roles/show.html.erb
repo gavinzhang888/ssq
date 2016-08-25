@@ -1,0 +1,50 @@
+<ol class="breadcrumb white">
+	<li><a href="/"><%= I18n.t :"page.static.home" %></a></li>
+	<li><a href="/roles"><%= I18n.t :"role.modelname" %></a></li>
+	<li class="active">{{role.name}}</li>
+</ol>
+<div class="action-bar">
+  <div class="action-btns">
+    <a href="javascript:void(0);" ng-click="goBack()" class="btn btn-default"><i class="fa fa-arrow-left"></i></a>
+    <a ng-href="/roles/{{role.id}}/edit" class="btn btn-default"><i class="fa fa-pencil-square-o"></i></a>
+    <a href="javascript:void(0);" ng-click="refreshPage()" class="btn btn-default"><i class="fa fa-refresh"></i></a>
+    <a href="javascript:void(0);" print-div="#print-area" class="btn btn-default"><i class="fa fa-print"></i></a>
+  </div>
+</div>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="panel-title">
+			{{role.name}}
+			<div class="gray pull-right font12">
+				<%= I18n.t :"page.static.updated_at" %>：{{role.updated_at}}
+	      <%= I18n.t :"page.static.created_at" %>：{{role.created_at}}
+			</div>
+		</div>
+  </div>
+  <div class="panel-body">
+		<div role="tabpanel">
+			 <!-- Nav tabs-->
+			 <ul role="tablist" class="nav nav-tabs">
+					<li role="presentation" class="active"><a href="#base" ng-click="$event.preventDefault()" aria-controls="base" role="tab" data-toggle="tab"><%= I18n.t :"page.static.basic_information" %></a>
+					</li>
+					<li role="presentation"><a href="#histories" ng-click="getHistories('Role', role.id);$event.preventDefault()" aria-controls="histories" role="tab" data-toggle="tab"><%= I18n.t :"page.static.histories" %></a>
+			 </ul>
+			 <!-- Tab panes-->
+			 <div class="tab-content">
+					<div id="base" role="tabpanel" class="tab-pane active">
+						<table class="table table-bordered table-cus" ng-init="roleInit()">
+				      <tr>
+				       <th><%= I18n.t :"role.name" %></th>
+				       <td>{{role.name}}</td>
+				       <th><%= I18n.t :"role.detail" %></th>
+				       <td>{{role.detail}}</td>
+				      </tr>
+				    </table>
+					</div>
+					<div id="histories" role="tabpanel" class="tab-pane">
+            <div ng-include="'/templates/histories.html'" ng-if="histories"></div>
+          </div>
+			 </div>
+		</div>
+  </div>
+</div>

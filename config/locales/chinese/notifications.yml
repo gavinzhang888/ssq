@@ -1,0 +1,15 @@
+zh-CN:
+  notification:
+    modelname: 通知
+    formname: 通知
+    user_id: 收件人
+    readed: 状态
+    content: 内容
+    link: 链接
+    category: 类型
+    level: 等级
+    creator_id: 创建人
+    created_at: 创建于
+    updated_at: 更新于
+    readed_true: 已读
+    readed_false: 未读

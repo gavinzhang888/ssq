@@ -1,0 +1,167 @@
+<ol class="breadcrumb white">
+	<li>
+		<a href="/"><%= I18n.t :"page.static.home" %></a>
+	</li>
+	<li>
+		<a href="/double_balls"><%= I18n.t :"double_ball.modelname" %></a>
+	</li>
+	<li class="active">{{double_ball.name}}</li>
+</ol>
+<div class="action-bar">
+	<div class="action-btns">
+		<a href="javascript:void(0);" ng-click="goBack()" class="btn btn-default">
+			<i class="fa fa-arrow-left"></i>
+		</a>
+		<a ng-href="/double_balls/{{double_ball.id}}/edit" class="btn btn-default">
+			<i class="fa fa-pencil-square-o"></i>
+		</a>
+		<a href="javascript:void(0);" ng-click="refreshPage()" class="btn btn-default">
+			<i class="fa fa-refresh"></i>
+		</a>
+		<a href="javascript:void(0);" print-div="#print-area" class="btn btn-default">
+			<i class="fa fa-print"></i>
+		</a>
+	</div>
+</div>
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<div class="panel-title">
+			{{double_ball.number}}
+			<div class="gray pull-right font12">
+				<%= I18n.t :"page.static.updated_at" %>：{{double_ball.updated_at}}
+				<%= I18n.t :"page.static.created_at" %>：{{double_ball.created_at}}
+				<%= I18n.t :"page.static.creator" %>：{{double_ball.creator}}
+			</div>
+		</div>
+	</div>
+	<div class="panel-body">
+		<div role="tabpanel">
+			<!-- Nav tabs-->
+			<ul role="tablist" class="nav nav-tabs">
+				<li role="presentation" class="active">
+					<a href="#base" ng-click="$event.preventDefault()" aria-controls="base" role="tab" data-toggle="tab"><%= I18n.t :"page.static.basic_information" %></a>
+				</li>
+			</ul>
+			<!-- Tab panes-->
+			<div class="tab-content">
+				<div id="base" role="tabpanel" class="tab-pane active">
+					<table class="table table-bordered table-cus table-show" ng-init="double_ballInit()">
+						<tr>
+							<th><%= I18n.t :"double_ball.number" %></th>
+							<td>
+								{{double_ball.number}}
+							</td>
+							<th><%= I18n.t :"double_ball.date" %></th>
+							<td>
+								{{double_ball.date}}
+							</td>
+						</tr>
+						<tr>
+							<th><%= I18n.t :"double_ball.red_1" %></th>
+							<td>
+								{{double_ball.red_1}}
+							</td>
+							<th><%= I18n.t :"double_ball.red_2" %></th>
+							<td>
+								{{double_ball.red_2}}
+							</td>
+						</tr>
+						<tr>
+							<th><%= I18n.t :"double_ball.red_3" %></th>
+							<td>
+								{{double_ball.red_3}}
+							</td>
+							<th><%= I18n.t :"double_ball.red_4" %></th>
+							<td>
+								{{double_ball.red_4}}
+							</td>
+						</tr>
+						<tr>
+							<th><%= I18n.t :"double_ball.red_5" %></th>
+							<td>
+								{{double_ball.red_5}}
+							</td>
+							<th><%= I18n.t :"double_ball.red_6" %></th>
+							<td>
+								{{double_ball.red_6}}
+							</td>
+						</tr>
+						<tr>
+							<th><%= I18n.t :"double_ball.blue" %></th>
+							<td>
+								{{double_ball.blue}}
+							</td>
+							<th><%= I18n.t :"double_ball.amount" %></th>
+							<td>
+								{{double_ball.amount}}
+							</td>
+						</tr>
+						<tr>
+							<th><%= I18n.t :"double_ball.grade_1" %></th>
+							<td>
+								{{double_ball.grade_1}}
+							</td>
+							<th><%= I18n.t :"double_ball.amount_1" %></th>
+							<td>
+								{{double_ball.amount_1}}
+							</td>
+						</tr>
+						<tr>
+							<th><%= I18n.t :"double_ball.grade_2" %></th>
+							<td>
+								{{double_ball.grade_2}}
+							</td>
+							<th><%= I18n.t :"double_ball.amount_2" %></th>
+							<td>
+								{{double_ball.amount_2}}
+							</td>
+						</tr>
+						<tr>
+							<th><%= I18n.t :"double_ball.grade_3" %></th>
+							<td>
+								{{double_ball.grade_3}}
+							</td>
+							<th><%= I18n.t :"double_ball.amount_4" %></th>
+							<td>
+								{{double_ball.amount_4}}
+							</td>
+						</tr>
+						<tr>
+							<th><%= I18n.t :"double_ball.grade_5" %></th>
+							<td>
+								{{double_ball.grade_5}}
+							</td>
+							<th><%= I18n.t :"double_ball.amount_6" %></th>
+							<td>
+								{{double_ball.amount_6}}
+							</td>
+						</tr>
+						<tr>
+							<th><%= I18n.t :"double_ball.grade_2" %></th>
+							<td>
+								{{double_ball.grade_2}}
+							</td>
+							<th><%= I18n.t :"double_ball.amount_2" %></th>
+							<td>
+								{{double_ball.amount_2}}
+							</td>
+						</tr>
+						<tr>
+							<th><%= I18n.t :"double_ball.grade_2" %></th>
+							<td>
+								{{double_ball.grade_2}}
+							</td>
+							<th><%= I18n.t :"double_ball.amount_2" %></th>
+							<td>
+								{{double_ball.amount_2}}
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div id="histories" role="tabpanel" class="tab-pane">
+					<div ng-include="'/templates/histories.html'" ng-if="histories"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

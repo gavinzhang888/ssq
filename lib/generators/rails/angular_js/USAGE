@@ -1,0 +1,9 @@
+Description:
+    Explain the generator
+
+Example:
+    rails generate angular_js Thing
+
+    This will create:
+        app/assets/javascripts/controllers
+        app/assets/javascripts/controllers/#{file_name}_controllers.coffee

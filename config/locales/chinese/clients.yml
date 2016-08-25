@@ -1,0 +1,25 @@
+zh-CN:
+  client:
+    modelname: 客户
+    formname: 客户
+    name: 客户名称
+    phone: 电话
+    id_number: 身份证
+    address: 地址
+    email: 邮箱
+    category_id: 客户类型
+    remark: 备注
+    created_at: 创建于
+    updated_at: 更新于
+    creator: 创建人
+
+  activerecord:
+    attributes:
+      api/v1/client:
+        name: 客户名称
+        phone: 电话
+        id_number: 身份证
+        address: 地址
+        email: 邮箱
+        category_id: 客户类型
+        remark: 备注

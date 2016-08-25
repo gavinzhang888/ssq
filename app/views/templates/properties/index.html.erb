@@ -1,0 +1,46 @@
+<div  ng-if="<%= session[:properties].present? %>">
+	<ol class="breadcrumb white">
+	  <li><a href="/"><%= I18n.t :"page.static.home" %></a></li>
+	  <li class="active">属性设置</li>
+	</ol>
+	<div class="row" ng-init="setUp(<%= session[:properties].to_json %>)">
+		<% session[:properties].each do |p| %>
+		  <div class="col-lg-4">
+		    <div class="panel panel-default">
+		      <div class="panel-heading"><%= p["cname"] %></div>
+		      <div class="panel-wrapper collapse in">
+		      <div class="panel-body">
+		        <ul class="list-group">
+		          <li class="list-group-item">
+		            <form ng-submit="submitProperty(<%= p["name"] %>,'<%= p["name"] %>')">
+								  <input class="form-control" type="text" ng-model="<%= p["name"] %>.name" placeholder="新增...">
+								  <input class="form-control" type="hidden" ng-model="<%= p["name"] %>.type" ng-value="<%= p["name"] %>.type = '<%= p["model"] %>'">
+								</form>
+		          </li>
+		        </ul>
+		        <ul ui-sortable="sortableOptions" class="list-group sortable" ng-model="<%= p["name"] + "_properties" %>">
+		          <li class="list-group-item" style="cursor: move;" ng-repeat="p in <%= p["name"] + "_properties" %>">
+								 <div class="row">
+									 <div class="col-lg-9" ng-switch on="p.editable">
+										 <form ng-switch-when="true" ng-submit="submitProperty(p,'<%= p["name"] %>')">
+										 		<input class="form-control" type="text" ng-model="p.name">
+										 </form>
+											<span ng-switch-default><em class="fa fa-reorder fa-fw text-muted mr-lg"></em>
+											{{p.name}}</span>
+									 </div>
+									 <div class="col-lg-3">
+										 <span class="pull-right">
+											 <a href="javascript:void(0);" ng-click="editProperty(p)"><i class="fa fa-pencil-square-o"></i></a>
+				               <a href="javascript:void(0);" ng-click="deleteAlert(<%= p["name"] + '_properties' %>,p)"><i class="fa fa-times red"></i></a>
+										 </span>
+									 </div>
+								 </div>
+		          </li>
+		        </ul>
+		      </div>
+		      </div>
+		    </div>
+		  </div>
+		<% end %>
+	</div>
+</div>

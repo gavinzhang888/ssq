@@ -1,0 +1,77 @@
+<ol class="breadcrumb white">
+	<li><a href="/"><%= I18n.t :"page.static.home" %></a></li>
+	<li><a href="/clients"><%= I18n.t :"client.modelname" %></a></li>
+	<li class="active">{{client.name}}</li>
+</ol>
+<div class="action-bar">
+  <div class="action-btns">
+    <a href="javascript:void(0);" ng-click="goBack()" class="btn btn-default"><i class="fa fa-arrow-left"></i></a>
+    <a ng-href="/clients/{{client.id}}/edit" class="btn btn-default"><i class="fa fa-pencil-square-o"></i></a>
+    <a href="javascript:void(0);" ng-click="refreshPage()" class="btn btn-default"><i class="fa fa-refresh"></i></a>
+    <a href="javascript:void(0);" print-div="#print-area" class="btn btn-default"><i class="fa fa-print"></i></a>
+  </div>
+</div>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="panel-title">
+			{{client.name}}
+			<div class="gray pull-right font12">
+				<%= I18n.t :"page.static.updated_at" %>：{{client.updated_at}}
+	      <%= I18n.t :"page.static.created_at" %>：{{client.created_at}}
+	      <%= I18n.t :"page.static.creator" %>：{{client.creator}}
+			</div>
+		</div>
+  </div>
+  <div class="panel-body">
+		<div role="tabpanel">
+			 <!-- Nav tabs-->
+			 <ul role="tablist" class="nav nav-tabs">
+					<li role="presentation" class="active"><a href="#base" ng-click="$event.preventDefault()" aria-controls="base" role="tab" data-toggle="tab"><%= I18n.t :"page.static.basic_information" %></a>
+					</li>
+					<li role="presentation"><a href="#histories" ng-click="getHistories('Api::V1::Client', client.id);$event.preventDefault()" aria-controls="histories" role="tab" data-toggle="tab"><%= I18n.t :"page.static.histories" %></a>
+			 </ul>
+			 <!-- Tab panes-->
+			 <div class="tab-content">
+					<div id="base" role="tabpanel" class="tab-pane active">
+						<table class="table table-bordered table-cus table-show" ng-init="clientInit()">
+				      <tr>
+				       <th><%= I18n.t :"client.name" %></th>
+				       <td>
+								 <a href="#" editable-text="client.name" onaftersave="updateClient()">{{client.name}}</a>
+							 </td>
+				       <th><%= I18n.t :"client.category_id" %></th>
+				       <td>
+								 <a href="#" editable-select="client.category_id" e-ng-options="s.id as s.name for s in categories" onaftersave="updateClient()">{{client.category}}</a>
+							 </td>
+				      </tr>
+
+				      <tr>
+				       <th><%= I18n.t :"client.phone" %></th>
+				       <td>
+								 <a href="#" editable-text="client.phone" onaftersave="updateClient()">{{client.phone}}</a>
+							 </td>
+				       <th><%= I18n.t :"client.email" %></th>
+				       <td>
+								 <a href="#" editable-text="client.email" onaftersave="updateClient()">{{client.email}}</a>
+							 </td>
+				      </tr>
+
+				      <tr>
+				       <th><%= I18n.t :"client.address" %></th>
+				       <td>
+								 <a href="#" editable-text="client.address" onaftersave="updateClient()">{{client.address}}</a>
+							 </td>
+				       <th><%= I18n.t :"client.remark" %></th>
+				       <td>
+								 <a href="#" editable-textarea="client.remark" e-rows="7" e-cols="40" onaftersave="updateClient()">{{client.remark}}</a>
+							 </td>
+				      </tr>
+				    </table>
+					</div>
+					<div id="histories" role="tabpanel" class="tab-pane">
+						<div ng-include="'/templates/histories.html'" ng-if="histories"></div>
+					</div>
+			 </div>
+		</div>
+  </div>
+</div>

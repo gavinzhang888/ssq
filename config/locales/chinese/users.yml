@@ -1,0 +1,20 @@
+zh-CN:
+  user:
+    modelname: 用户
+    formname: 用户
+    username: 姓名
+    email: 邮箱
+    approved: 允许登录
+    password: 密码
+    password_confirmation: 密码确认
+    created_at: 创建于
+    updated_at: 更新于
+
+  activerecord:
+    attributes:
+      user:
+        username: 姓名
+        email: 邮箱
+        approved: 允许登录
+        password: 密码
+        password_confirmation: 密码确认

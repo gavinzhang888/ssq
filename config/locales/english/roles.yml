@@ -1,0 +1,14 @@
+en:
+  role:
+    modelname: Role
+    formname: Role
+    name: Name
+    detail: Detail
+    created_at: Created At
+    updated_at: Updated At
+
+  activerecord:
+    attributes:
+      role:
+        name: Name
+        detail: Detail

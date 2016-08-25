@@ -1,0 +1,148 @@
+<ol class="breadcrumb white">
+  <li><a href="/"><%= I18n.t :"page.static.home" %></a></li>
+  <li class="active"><%= I18n.t :"opportunity.modelname" %> <span ng-bind="opportunities.meta.total"></span> <%= I18n.t :"page.static.unit" %></li>
+</ol>
+
+<div class="action-bar">
+  <div class="action-btns form-inline">
+    <a ng-href="/opportunities/new" class="btn btn-default"><i class="fa fa-plus"></i></a>
+    <!-- <a ng-href="/opportunities/new" class="btn btn-default"><i class="fa fa-pencil-square-o"></i></a> -->
+    <a href="javascript:void(0);" class="btn btn-default" ng-click="deleteAllAlert(opportunities,opportunity)"><i class="fa fa-trash-o"></i></a>
+    <a href="javascript:void(0);" ng-click="refreshPage()" class="btn btn-default"><i class="fa fa-refresh"></i></a>
+    <button class="btn btn-default" data-toggle="collapse" data-target="#table-search" data-animate="" data-play="bounceInUp"><i class="fa fa-search"></i></button>
+    <div class="btn-group">
+      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+        <%= I18n.t :"page.static.more" %> <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+        <li><a href="javascript:void(0);" ng-click="setPerpage(15)"><%= I18n.t :"page.static.per_page" %> 15 <%= I18n.t :"page.static.unit" %></a></li>
+        <li><a href="javascript:void(0);" ng-click="setPerpage(50)"><%= I18n.t :"page.static.per_page" %> 50 <%= I18n.t :"page.static.unit" %></a></li>
+        <li class="divider"></li>
+        <li><a ng-href="/properties?t=opportunity" target="_blank"><%= I18n.t :"page.static.custom" %></a></li>
+        <li><a href="javascript:void(0);" ng-click="export()"><%= I18n.t :"page.static.export" %></a></li>
+        <li><a href="javascript:void(0);" print-div="#print-area"><%= I18n.t :"page.static.print" %></a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="willPaginate"
+   data-params="willPaginateCollection"
+   data-on-click="getPage"
+   data-config="willPaginateConfig"
+   ng-if="opportunities.meta.total > opportunities.meta.perpage">
+  </div>
+</div>
+
+<div class="panel panel-default table-responsive" id="print-area">
+  <div class="panel-body">
+    <table class="table table-striped table-hover table-auto" ng-init="getData()">
+      <thead>
+        <tr>
+          <th>
+            <div class="btn-group">
+               <a href="#" ng-click="$event.preventDefault()" data-toggle="dropdown">
+                 <em class="fa fa-th-list"></em>
+               </a>
+               <ul role="menu" class="dropdown-menu">
+                 <li><input type="checkbox" /><span><%= I18n.t :"page.static.show_and_hidden" %></span></li>
+                 <li class="divider"></li>
+                 <li><input type="checkbox" /><span><%= I18n.t :"opportunity.code" %></span></li>
+                 <li><input type="checkbox" /><span><%= I18n.t :"opportunity.name" %></span></li>
+                 <li><input type="checkbox" /><span><%= I18n.t :"opportunity.client_id" %></span></li>
+                 <li><input type="checkbox" /><span><%= I18n.t :"opportunity.amount" %></span></li>
+                 <li><input type="checkbox" /><span><%= I18n.t :"opportunity.status_id" %></span></li>
+                 <li><input type="checkbox" /><span><%= I18n.t :"opportunity.remark" %></span></li>
+                 <li><input type="checkbox" /><span><%= I18n.t :"opportunity.creator_id" %></span></li>
+                 <li><input type="checkbox" /><span><%= I18n.t :"opportunity.created_at" %></span></li>
+                 <li class="divider"></li>
+                 <li>
+                   <button class="btn btn-success btn-xs"><%= I18n.t :"page.static.ok" %></button>
+                   <button class="btn btn-default btn-xs"><%= I18n.t :"page.static.cancel" %></button>
+                 </li>
+               </ul>
+            </div>
+          </th>
+          <th><input type="checkbox" ng-model="select_datas[0]" ng-click="select_items(opportunities)"/></th>
+          <th sort-list-html data-filed="code" data-filed-name="<%= I18n.t :"opportunity.code" %>"></th>
+          <th sort-list-html data-filed="name" data-filed-name="<%= I18n.t :"opportunity.name" %>"></th>
+          <th sort-list-html data-filed="client_name" data-filed-name="<%= I18n.t :"opportunity.client_id" %>"></th>
+          <th sort-list-html data-filed="amount" data-filed-name="<%= I18n.t :"opportunity.amount" %>"></th>
+          <th sort-list-html data-filed="status_id" data-filed-name="<%= I18n.t :"opportunity.status_id" %>"></th>
+          <th sort-list-html data-filed="remark" data-filed-name="<%= I18n.t :"opportunity.remark" %>"></th>
+          <th sort-list-html data-filed="creator_name" data-filed-name="<%= I18n.t :"opportunity.creator_id" %>"></th>
+          <th sort-list-html data-filed="created_at" data-filed-name="<%= I18n.t :"opportunity.created_at" %>"></th>
+        </tr>
+        <tr class="table-search" class="collapse" id="table-search">
+          <td></td>
+          <td></td>
+          <td><%= search_text(field: "code") %><%= search_button("opportunities") %></td>
+          <td><%= search_text(field: "name") %></td>
+          <td><%= search_text(field: "client_id") %></td>
+          <td><%= search_number(field: "amount") %></td>
+          <td><%= search_text(field: "status_id") %></td>
+          <td><%= search_text(field: "remark") %></td>
+          <td><%= search_text(field: "creator") %></td>
+          <td><%= search_date(field: "created_at") %></td>
+        </tr>
+      </thead>
+      <tbody>
+       <tr ng-repeat="opportunity in opportunities">
+         <td>
+           <div class="btn-group operate">
+              <a href="#" ng-click="$event.preventDefault()" data-toggle="dropdown"><em class="fa fa-sliders"></em></a>
+              <ul role="menu" class="dropdown-menu">
+                <li>
+                  <a ng-href="/opportunities/{{opportunity.id}}/edit">
+                    <i class="fa fa-pencil-square-o"></i>
+                    <span><%= I18n.t :"page.static.edit" %></span>
+                  </a>
+                </li>
+                <li>
+                  <a href="javascript:void(0);" ng-click="deleteAlert(opportunities,opportunity)">
+                    <i class="fa fa-trash-o"></i>
+                    <span><%= I18n.t :"page.static.delete" %></span>
+                  </a>
+                </li>
+                <li>
+                  <a ng-href="/opportunities/{{opportunity.id}}">
+                    <i class="fa fa-newspaper-o"></i>
+                    <span><%= I18n.t :"page.static.detail" %></span>
+                  </a>
+                </li>
+              </ul>
+           </div>
+         </td>
+         <td><input type="checkbox" ng-model="select_datas[opportunity.id]" ng-click="select_item(opportunities)" /></td>
+         <td><a ng-href="/opportunities/{{opportunity.id}}">{{ opportunity.code }}</a></td>
+         <td>{{ opportunity.name }}</td>
+         <td>{{ opportunity.client }}</td>
+         <td>{{ opportunity.amount | customCurrency: '￥'}}</td>
+         <td>{{ opportunity.status_id }}</td>
+         <td>{{ opportunity.remark }}</td>
+         <td>{{ opportunity.creator }}</td>
+         <td>{{ opportunity.created_at }}</td>
+       </tr>
+      </tbody>
+      <tfoot class="panel-footer">
+        <tr>
+          <td colspan="5"><%= I18n.t :"page.static.subtotal" %> ({{perpageEntries}} <%= I18n.t :"page.static.unit" %>)</td>
+          <td><b>{{opportunities.statistics_results.paginate_amount | customCurrency: '￥'}}</b></td>
+          <td colspan="50"></td>
+        </tr>
+        <tr>
+          <td colspan="5"><%= I18n.t :"page.static.total" %> ({{totalEntries}} <%= I18n.t :"page.static.unit" %>)</td>
+          <td><b>{{opportunities.statistics_results.all_amount | customCurrency: '￥'}}</b></td>
+          <td colspan="50"></td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>
+<div class="action-bar">
+  <div class="willPaginate"
+   data-params="willPaginateCollection"
+   data-on-click="getPage"
+   data-config="willPaginateConfig"
+   ng-if="opportunities.meta.total > opportunities.meta.perpage">
+  </div>
+</div>

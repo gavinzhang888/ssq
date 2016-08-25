@@ -1,0 +1,66 @@
+<ol class="breadcrumb white">
+  <li><a href="/"><%= I18n.t :"page.static.home" %></a></li>
+  <li class="active"><%= I18n.t :"user.modelname" %> <span ng-bind="users.meta.total"></span> <%= I18n.t :"page.static.unit" %></li>
+</ol>
+<div class="action-bar">
+  <div class="action-btns form-inline">
+    <input type="text" ng-model="query" class="form-control">
+    <input type="text" ng-model="started_at" date-time-picker class="form-control" placeholder="起始于">
+    <input type="text" ng-model="ended_at" date-time-picker class="form-control" placeholder="结束于">
+    <a href="javascript:void(0);" ng-click="search(query, started_at, ended_at)" class="btn btn-default"><i class="fa fa-search"></i></a>
+    <span class="action-line">|</span>
+    <a ng-href="/users/new" class="btn btn-default"><i class="fa fa-plus"></i></a>
+    <a href="javascript:void(0);" ng-click="refreshPage()" class="btn btn-default"><i class="fa fa-refresh"></i></a>
+    <a href="javascript:void(0);" print-div="#print-area" class="btn btn-default"><i class="fa fa-print"></i></a>
+    <div class="btn-group">
+      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+        <%= I18n.t :"page.static.more" %> <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+        <li><a href="javascript:void(0);" ng-click="setPerpage(15)"><%= I18n.t :"page.static.per_page" %> 15 <%= I18n.t :"page.static.unit" %></a></li>
+        <li><a href="javascript:void(0);" ng-click="setPerpage(50)"><%= I18n.t :"page.static.per_page" %> 50 <%= I18n.t :"page.static.unit" %></a></li>
+        <li class="divider"></li>
+        <li><a ng-href="/properties?t=user" target="_blank"><%= I18n.t :"page.static.custom" %></a></li>
+        <li><a href="javascript:void(0);" ng-click="export()"><%= I18n.t :"page.static.export" %></a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="willPaginate"
+   data-params="willPaginateCollection"
+   data-on-click="getPage"
+   data-config="willPaginateConfig"
+   ng-if="users.meta.total > users.meta.perpage">
+  </div>
+</div>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <table class="table table-striped table-hover" ng-init="getData()">
+      <thead>
+       <th class="t-number"><%= I18n.t :"page.static.num" %></th>
+       <th><%= I18n.t :"user.username" %></th>
+       <th><%= I18n.t :"user.email" %></th>
+       <th><%= I18n.t :"page.static.operate" %></th>
+      </thead>
+      <tbody>
+       <tr ng-repeat="user in users">
+         <td ng-bind="$index + 1"></td>
+         <td><a ng-href="/users/{{user.id}}">{{ user.username }}</a></td>
+         <td>{{ user.email }}</td>
+         <td>
+           <a ng-href="/users/{{user.id}}/edit"><i class="fa fa-pencil-square-o"></i></a>
+           <a href="javascript:void(0);" ng-click="deleteAlert(users,user)"><i class="fa fa-times red"></i></a>
+         </td>
+       </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="action-bar">
+  <div class="willPaginate"
+   data-params="willPaginateCollection"
+   data-on-click="getPage"
+   data-config="willPaginateConfig"
+   ng-if="users.meta.total > users.meta.perpage">
+  </div>
+</div>

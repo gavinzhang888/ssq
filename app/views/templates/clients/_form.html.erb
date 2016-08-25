@@ -1,0 +1,69 @@
+<form name="clientForm" ng-init="clientFormInit()" ng-submit="submitClient(client)">
+<div class="panel"  ng-class="data_errors ? 'panel-danger' : 'panel-default'">
+  <div class="panel-heading">
+    <div class="panel-title" ng-if="!client.id"><%= I18n.t :"page.static.new" %><%= I18n.t :"client.modelname" %></div>
+    <div class="panel-title" ng-if="client.id"><%= I18n.t :"page.static.edit" %><%= I18n.t :"client.modelname" %></div>
+  </div>
+  <div class="panel-body">
+    <div class="row" ng-if="data_errors">
+      <div class="col-sm-12 error-flash">
+        <ul>
+          <li ng-repeat="error in data_errors">{{error}}</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label class="control-label"><%= I18n.t :"client.name" %><span class="red">*</span></label>
+          <input type="text" name="name" ng-model="client.name" class="form-control input-width" />
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label class="control-label"><%= I18n.t :"client.category_id" %><span class="red">*</span></label>
+          <select ng-options="category.id as category.name for category in categories" ng-model="client.category_id" class="form-control input-width">
+             <option value=""></option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label class="control-label"><%= I18n.t :"client.phone" %></label>
+          <input type="text" name="phone" ng-model="client.phone" class="form-control input-width" />
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label class="control-label"><%= I18n.t :"client.email" %></label>
+          <input type="text" name="email" ng-model="client.email" class="form-control input-width" />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label class="control-label"><%= I18n.t :"client.address" %></label>
+          <input type="text" name="address" ng-model="client.address" class="form-control input-width" />
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label class="control-label"><%= I18n.t :"client.remark" %></label>
+          <input type="text" name="remark" ng-model="client.remark" class="form-control input-width" />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="form-group">
+          <button class="btn btn-success" ng-class="{'disabled': !client}"><%= I18n.t :"page.static.submit" %></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</form>

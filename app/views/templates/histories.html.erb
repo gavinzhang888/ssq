@@ -1,0 +1,45 @@
+<div class="histories" ng-show="histories">
+	<ul>
+		<li ng-repeat="history in histories| orderBy:'-created_at'">
+			<div class="history-info">
+				<span class="operation" ng-class="history.operation">
+					<i class="fa" ng-class="{'fa-plus': history.operation == 'create', 'fa-edit': history.operation == 'update'}"></i>
+				</span>
+				<span class="time" ng-bind-html="history.created_at | unsafe"></span>
+			</div>
+			<div>
+				<span class="red" ng-bind="history.operator"></span>
+				<span ng-bind-html="history.detail[0] | unsafe"></span>
+			</div>
+			<div ng-repeat="detail in history.detail">
+				<p ng-bind-html="detail | unsafe" ng-if="$index != 0"></p>
+			</div>
+		</li>
+	</ul>
+</div>
+
+<!-- <div ng-show="histories">
+	<ul class="timeline pull-left">
+	   <li data-datetime="Now" class="timeline-separator"></li>
+	   <li class="timeline-inverted" ng-repeat="history in histories| orderBy:'-created_at'">
+	      <div class="timeline-badge warning">
+	         <em ng-class="{'fa fa-plus': history.operation == 'create', 'fa fa-edit': history.operation == 'update'}"></em>
+	      </div>
+	      <div class="timeline-panel">
+	         <div class="popover right">
+	            <h4 class="popover-title" ng-bind-html="history.created_at | unsafe"></h4>
+	            <div class="arrow"></div>
+	            <div class="popover-content">
+								<div>
+								 <span class="red" ng-bind="history.operator"></span>
+								 <span ng-bind-html="history.detail[0] | unsafe"></span>
+								</div>
+								<div ng-repeat="detail in history.detail">
+								 <p ng-bind-html="detail | unsafe" ng-if="$index != 0"></p>
+								</div>
+	            </div>
+	         </div>
+	      </div>
+	   </li>
+	</ul>
+</div> -->

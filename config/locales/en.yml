@@ -1,0 +1,59 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+  page:
+    static:
+      home: Home
+      num: "No."
+      operate: Operate
+      create: Create
+      edit: Edit
+      new: New
+      update: Update
+      delete: Delete
+      detail: Detail
+      submit: Submit
+      more: More
+      custom: Custom
+      export: Export
+      created_at: Created At
+      updated_at: Updated At
+      creator: Creator
+      unit: Entries
+      basic_information: Basic Information
+      histories: Histories
+      per_page: Show
+      print: Print
+      cancel: Cancel
+      ok: OK
+      show_and_hidden: Show Fields
+      subtotal: Subtotal
+      total: Total
+      default_view: Default View
+    setting:
+      setting: Setting
+      theme: Theme
+      page_setting: Page Setting
+      wide_adjust: Page Wide Adjust
+      collapse_memu: Collapse Memu
+      float_memu: Float Memu
+      memu_hover_show: Memu Hover Show

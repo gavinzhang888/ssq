@@ -1,0 +1,12 @@
+<ol class="breadcrumb white">
+	<li><a href="/"><%= I18n.t :"page.static.home" %></a></li>
+	<li><a href="/double_balls"><%= I18n.t :"double_ball.modelname" %></a></li>
+	<li class="active"><%= I18n.t :"page.static.new" %><%= I18n.t :"double_ball.modelname" %></li>
+</ol>
+<div class="action-bar">
+  <div class="action-btns">
+     <a href="javascript:void(0);" ng-click="goBack()" class="btn btn-default"><i class="fa fa-arrow-left"></i></a>
+     <a href="javascript:void(0);" ng-click="refreshPage()" class="btn btn-default"><i class="fa fa-refresh"></i></a>
+  </div>
+</div>
+<%= render "/templates/double_balls/form" %>

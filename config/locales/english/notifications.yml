@@ -1,0 +1,13 @@
+en:
+  notification:
+    modelname: Notification
+    formname: Notification
+    user_id: User
+    readed: Read Status
+    content: Content
+    link: Link
+    category: Type
+    level: Level
+    creator_id: Creator
+    created_at: Created At
+    updated_at: Updated At

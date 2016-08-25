@@ -1,0 +1,107 @@
+<form name="roleForm" ng-init="roleFormInit()" ng-submit="submitRole(role)">
+<div class="panel" ng-class="data_errors ? 'panel-danger' : 'panel-default'">
+  <div class="panel-heading">
+    <div class="panel-title" ng-if="!role.id"><%= I18n.t :"page.static.new" %><%= I18n.t :"role.modelname" %></div>
+    <div class="panel-title" ng-if="role.id"><%= I18n.t :"page.static.edit" %><%= I18n.t :"role.modelname" %></div>
+  </div>
+  <div class="panel-body">
+    <div class="row" ng-if="data_errors">
+      <div class="col-sm-12 error-flash">
+        <ul>
+          <li ng-repeat="error in data_errors">{{error}}</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="form-group">
+          <label class="control-label"><%= I18n.t :"role.name" %><span class="red">*</span></label>
+          <input type="text" ng-model="role.name" class="form-control input-width" />
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="form-group">
+          <label><%= I18n.t :"role.detail" %><span class="red">*</span></label>
+          <div class="table-responsive table-bordered">
+            <table class="table">
+              <thead>
+                <th>模块</th>
+                <th>新建</th>
+                <th>查看</th>
+                <th>修改</th>
+                <th>删除</th>
+                <th>历史纪录</th>
+                <th>
+                    <a href="javascript:void(0);" ng-click="checkAll(rolenames)" class="btn btn-success btn-xs">全选所有</a>
+                </th>
+              </thead>
+
+              <tbody>
+                <tr ng-repeat="rolename in rolenames">
+                  <td ng-bind="rolename"></td>
+                  <td>
+                    <label class="checkbox checkbox-inline">
+                      <input type="checkbox" ng-model="role.detail[rolename]['create']" />
+                    </label>
+                  </td>
+                  <td>
+                    <label class="radio-inline c-radio">
+                      <input type="radio" name="read" ng-model="role.detail[rolename]['read']" />
+                      <span class="fa fa-check"></span>私有
+                    </label>
+
+                    <label class="radio-inline c-radio">
+                      <input type="radio" name="read" ng-model="role.detail[rolename]['readall']" />
+                      <span class="fa fa-check"></span>所有
+                    </label>
+                  </td>
+                  <td>
+                    <label class="radio-inline c-radio">
+                      <input type="radio" name="edit" ng-model="role.detail[rolename]['edit']" />
+                      <span class="fa fa-check"></span>私有
+                    </label>
+
+                    <label class="radio-inline c-radio">
+                      <input type="radio" name="edit" ng-model="role.detail[rolename]['editall']" />
+                      <span class="fa fa-check"></span>所有
+                    </label>
+                  </td>
+                  <td>
+                    <label class="radio-inline c-radio">
+                      <input type="radio" name="destroy" ng-model="role.detail[rolename]['destroy']" />
+                      <span class="fa fa-check"></span>私有
+                    </label>
+
+                    <label class="radio-inline c-radio">
+                      <input type="radio" name="destroy" ng-model="role.detail[rolename]['destroyall']" />
+                      <span class="fa fa-check"></span>所有
+                    </label>
+                  </td>
+                  <td>
+                    <label class="checkbox checkbox-inline">
+                      <input type="checkbox" ng-model="role.detail[rolename]['histories']" />
+                      可看
+                    </label>
+                  </td>
+                  <td>
+                    <a href="javascript:void(0);" ng-click="checkAll([rolename])" class="btn btn-default btn-xs">全选单行</a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="form-group">
+          <button class="btn btn-success" ng-class="{'disabled': !role}"><%= I18n.t :"page.static.submit" %></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</form>

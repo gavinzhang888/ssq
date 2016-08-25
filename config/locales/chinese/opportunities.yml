@@ -1,0 +1,23 @@
+zh-CN:
+  opportunity:
+    modelname: 商机
+    formname: 商机
+    name: 商机名称
+    code: 商机编号
+    client_id: 客户
+    amount: 金额
+    status_id: 状态
+    remark: 备注
+    created_at: 创建于
+    updated_at: 更新于
+    creator_id: 创建人
+
+  activerecord:
+    attributes:
+      api/v1/opportunity:
+        name: 商机名称
+        code: 商机编号
+        client_id: 客户
+        amount: 金额
+        status_id: 状态
+        remark: 备注

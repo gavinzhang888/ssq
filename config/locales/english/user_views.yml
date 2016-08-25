@@ -1,0 +1,10 @@
+en:
+  user_view:
+    modelname: View
+    formname: View
+    name: Name
+
+  activerecord:
+    attributes:
+      user_view:
+        name: Name

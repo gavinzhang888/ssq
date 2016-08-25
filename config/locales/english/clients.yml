@@ -1,0 +1,25 @@
+en:
+  client:
+    modelname: Client
+    formname: Client
+    name: Name
+    phone: Phone
+    id_number: ID Card
+    address: Address
+    email: Email
+    category_id: Client Type
+    remark: Remark
+    created_at: Created At
+    updated_at: Updated At
+    creator: Creator
+
+  activerecord:
+    attributes:
+      api/v1/client:
+        name: Name
+        phone: Phone
+        id_number: ID Card
+        address: Address
+        email: Email
+        category_id: Client Type
+        remark: Remark

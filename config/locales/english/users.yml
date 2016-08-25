@@ -1,0 +1,20 @@
+en:
+  user:
+    modelname: User
+    formname: User
+    username: Name
+    email: Email
+    approved: Allow Login
+    password: Password
+    password_confirmation: Password Confirmation
+    created_at: Created At
+    updated_at: Updated At
+
+  activerecord:
+    attributes:
+      user:
+        username: Name
+        email: Email
+        approved: Allow Login
+        password: Password
+        password_confirmation: Password Confirmation
