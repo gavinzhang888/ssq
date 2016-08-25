@@ -48,6 +48,9 @@
 @app.factory 'DoubleBall', ['Restangular', (Restangular) ->
   Restangular.service 'double_balls'
 ]
+@app.factory 'PrizeBall', ['Restangular', (Restangular) ->
+  Restangular.service 'prize_balls'
+]
 @app.factory 'Opportunity', ['Restangular', (Restangular) ->
   Restangular.service 'opportunities'
 ]

@@ -24,6 +24,11 @@
   $routeProvider.when '/double_balls/new', templateUrl: '/templates/double_balls/new.html', controller: 'DoubleBallsCtrl'
   $routeProvider.when '/double_balls/:id', templateUrl: '/templates/double_balls/show.html', controller: 'DoubleBallsCtrl'
 
+  $routeProvider.when '/prize_balls', templateUrl: '/templates/prize_balls/index.html', controller: 'PrizeBallsCtrl'
+  $routeProvider.when '/prize_balls/:id/edit', templateUrl: '/templates/prize_balls/edit.html', controller: 'PrizeBallsCtrl'
+  $routeProvider.when '/prize_balls/new', templateUrl: '/templates/prize_balls/new.html', controller: 'PrizeBallsCtrl'
+  $routeProvider.when '/prize_balls/:id', templateUrl: '/templates/prize_balls/show.html', controller: 'PrizeBallsCtrl'
+
   $routeProvider.when '/reports/line', templateUrl: '/templates/reports/line.html', controller: 'LinesCtrl'
   $routeProvider.when '/properties', templateUrl: '/templates/properties/index.html', controller: 'PropertiesCtrl'
 

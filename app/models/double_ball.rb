@@ -2,38 +2,39 @@
 #
 # Table name: double_balls
 #
-#  id             :integer          not null, primary key
-#  number         :string(255)
-#  date           :datetime
-#  week_number_id :integer
-#  red_1          :integer
-#  red_2          :integer
-#  red_3          :integer
-#  red_4          :integer
-#  red_5          :integer
-#  red_6          :integer
-#  blue           :integer
-#  amount         :decimal(30, 2)   default(0.0)
-#  grade_1        :integer          default(0)
-#  amount_1       :decimal(30, 2)   default(0.0)
-#  grade_2        :integer          default(0)
-#  amount_2       :decimal(30, 2)   default(0.0)
-#  grade_3        :integer          default(0)
-#  amount_3       :decimal(30, 2)   default(0.0)
-#  grade_4        :integer          default(0)
-#  amount_4       :decimal(30, 2)   default(0.0)
-#  grade_5        :integer          default(0)
-#  amount_5       :decimal(30, 2)   default(0.0)
-#  grade_6        :integer          default(0)
-#  amount_6       :decimal(30, 2)   default(0.0)
-#  odd            :integer          default(0)
-#  prime          :integer          default(0)
-#  red_total      :integer          default(0)
-#  total          :integer          default(0)
-#  creator_id     :integer
-#  deleted_at     :datetime
-#  created_at     :datetime         not null
-#  updated_at     :datetime         not null
+#  id          :integer          not null, primary key
+#  number      :string(255)
+#  date        :datetime
+#  red_1       :integer
+#  red_2       :integer
+#  red_3       :integer
+#  red_4       :integer
+#  red_5       :integer
+#  red_6       :integer
+#  blue        :integer
+#  all_count   :integer          default(0)
+#  amount      :decimal(30, 2)   default(0.0)
+#  grade_1     :integer          default(0)
+#  amount_1    :decimal(30, 2)   default(0.0)
+#  grade_2     :integer          default(0)
+#  amount_2    :decimal(30, 2)   default(0.0)
+#  grade_3     :integer          default(0)
+#  amount_3    :decimal(30, 2)   default(0.0)
+#  grade_4     :integer          default(0)
+#  amount_4    :decimal(30, 2)   default(0.0)
+#  grade_5     :integer          default(0)
+#  amount_5    :decimal(30, 2)   default(0.0)
+#  grade_6     :integer          default(0)
+#  amount_6    :decimal(30, 2)   default(0.0)
+#  odd         :integer          default(0)
+#  prime       :integer          default(0)
+#  red_total   :integer          default(0)
+#  total       :integer          default(0)
+#  week_number :integer
+#  creator_id  :integer
+#  deleted_at  :datetime
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
 #
 
 class DoubleBall < ApplicationRecord
@@ -47,7 +48,7 @@ class DoubleBall < ApplicationRecord
     sum += blue
     self.update_column(:total, sum) if self.total != sum
     x = self.date.wday
-    self.update_column(:week_number_id, x) if self.week_number_id != x
+    self.update_column(:week_number, x) if self.week_number != x
     x = 0
     x += 1 if self.red_1 % 2 == 1
     x += 1 if self.red_2 % 2 == 1

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :prize_balls, defaults: { format: 'json' }, path: 'api/v1/prize_balls'
   resources :double_balls, defaults: { format: 'json' }, path: 'api/v1/double_balls'
   resources :reports, defaults: { format: 'json' }, path: 'api/v1/reports' do
     collection do
@@ -33,7 +34,7 @@ Rails.application.routes.draw do
 
   root 'templates#index'
 
-  controllers = /(clients)|(double_balls)|(reports)|(opportunities)|(users)|(roles)|(notifications)/
+  controllers = /(clients)|(double_balls)|(prize_balls)|(reports)|(opportunities)|(users)|(roles)|(notifications)/
   match ":path" => 'templates#index', via: :get, constraints: {
     path: controllers
   }

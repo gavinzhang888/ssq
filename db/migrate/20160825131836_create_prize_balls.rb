@@ -1,6 +1,6 @@
-class CreateDoubleBalls < ActiveRecord::Migration[5.0]
+class CreatePrizeBalls < ActiveRecord::Migration[5.0]
   def change
-    create_table :double_balls do |t|
+    create_table :prize_balls do |t|
       t.string :number
       t.datetime :date
       t.integer :red_1

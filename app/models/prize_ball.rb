@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: double_balls
+# Table name: prize_balls
 #
 #  id          :integer          not null, primary key
 #  number      :string(255)
@@ -37,22 +37,32 @@
 #  updated_at  :datetime         not null
 #
 
-class DoubleBallSerializer < BaseSerializer
-  attributes :id, :number, :date, :red_1, :red_2, :red_3, :red_4, :red_5, :red_6, :blue, :amount, :grade_1,
-    :amount_1, :grade_2, :amount_2, :grade_3, :amount_3, :grade_4, :amount_4, :grade_5, :amount_5, :grade_6, :amount_6, :red_total,
-    :total, :week_number, :odd, :prime, :all_count
-  def date
-    object.date.strftime("%F") rescue nil
-  end
-  def week_number
-    case object.week_number
-    when 0 then "周日"
-    when 1 then "周一"
-    when 2 then "周二"
-    when 3 then "周三"
-    when 4 then "周四"
-    when 5 then "周五"
-    when 6 then "周六"
-    end
+class PrizeBall < ApplicationRecord
+  belongs_to :creator, class_name: "::User", foreign_key: "creator_id"
+  after_save :updat_info
+  def updat_info
+    primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31]
+    sum = self.red_1 + self.red_2 + self.red_3 + self.red_4 + self.red_5 + self.red_6
+    self.update_column(:red_total, sum) if self.red_total != sum
+    sum += blue
+    self.update_column(:total, sum) if self.total != sum
+    x = self.date.wday
+    self.update_column(:week_number, x) if self.week_number != x
+    x = 0
+    x += 1 if self.red_1 % 2 == 1
+    x += 1 if self.red_2 % 2 == 1
+    x += 1 if self.red_3 % 2 == 1
+    x += 1 if self.red_4 % 2 == 1
+    x += 1 if self.red_5 % 2 == 1
+    x += 1 if self.red_6 % 2 == 1
+    self.update_column(:odd, x) if self.odd != x
+    x = 0
+    x += 1 if primes.include?(self.red_1)
+    x += 1 if primes.include?(self.red_2)
+    x += 1 if primes.include?(self.red_3)
+    x += 1 if primes.include?(self.red_4)
+    x += 1 if primes.include?(self.red_5)
+    x += 1 if primes.include?(self.red_6)
+    self.update_column(:prime, x) if self.prime != x
   end
 end

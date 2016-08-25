@@ -1,0 +1,98 @@
+<form name="prize_ballForm" ng-init="prize_ballFormInit()" ng-submit="submitPrizeBall(prize_ball)">
+    <div class="panel" ng-class="data_errors ? 'panel-danger' : 'panel-default'">
+        <div class="panel-heading">
+            <div class="panel-title" ng-if="!prize_ball.id"><%= I18n.t :"page.static.new" %><%= I18n.t :"prize_ball.modelname" %></div>
+            <div class="panel-title" ng-if="prize_ball.id"><%= I18n.t :"page.static.edit" %><%= I18n.t :"prize_ball.modelname" %></div>
+        </div>
+        <div class="panel-body">
+            <div class="row" ng-if="data_errors">
+                <div class="col-sm-12 error-flash">
+                    <ul>
+                        <li ng-repeat="error in data_errors">{{error}}</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="control-label"><%= I18n.t :"prize_ball.number" %>
+                        </label>
+                        <input type="text" name="number" ng-model="prize_ball.number" class="form-control input-width"/>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="control-label"><%= I18n.t :"prize_ball.date" %>
+                        </label>
+                        <input type="text" date-time-picker ui-date ui-date-format="yy-mm-d" ng-model="prize_ball.date" class="form-control input-width" placeholder="选择日期">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="control-label"><%= I18n.t :"prize_ball.red_1" %>
+                        </label>
+                        <input type="text" name="red_1" ng-model="prize_ball.red_1" class="form-control input-width"/>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="control-label"><%= I18n.t :"prize_ball.red_2" %>
+                        </label>
+                        <input type="text" name="red_2" ng-model="prize_ball.red_2" class="form-control input-width"/>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="control-label"><%= I18n.t :"prize_ball.red_3" %>
+                        </label>
+                        <input type="text" name="red_3" ng-model="prize_ball.red_3" class="form-control input-width"/>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="control-label"><%= I18n.t :"prize_ball.red_4" %>
+                        </label>
+                        <input type="text" name="red_4" ng-model="prize_ball.red_4" class="form-control input-width"/>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="control-label"><%= I18n.t :"prize_ball.red_5" %>
+                        </label>
+                        <input type="text" name="red_5" ng-model="prize_ball.red_5" class="form-control input-width"/>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="control-label"><%= I18n.t :"prize_ball.red_6" %>
+                        </label>
+                        <input type="text" name="red_6" ng-model="prize_ball.red_6" class="form-control input-width"/>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="control-label"><%= I18n.t :"prize_ball.blue" %>
+                        </label>
+                        <input type="text" name="blue" ng-model="prize_ball.blue" class="form-control input-width"/>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <button class="btn btn-success" ng-class="{'disabled': !prize_ball}"><%= I18n.t :"page.static.submit" %></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

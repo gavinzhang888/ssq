@@ -23,8 +23,6 @@
         <li><a href="javascript:void(0);" print-div="#print-area"><%= I18n.t :"page.static.print" %></a></li>
       </ul>
     </div>
-    <div ng-include="'/templates/user_views.html'" class="btn-group" ng-controller="UserViewsCtrl" ng-init="getCurrentUserViews('DoubleBall')">
-    </div>
   </div>
 
   <div class="willPaginate"
@@ -44,7 +42,7 @@
           <th><input type="checkbox" ng-model="select_datas[0]" ng-click="select_items(double_balls)"/></th>
           <th><%= I18n.t :"double_ball.number" %></th>
           <th><%= I18n.t :"double_ball.date" %></th>
-          <th><%= I18n.t :"double_ball.week_number_id" %></th>
+          <th><%= I18n.t :"double_ball.week_number" %></th>
           <th><%= I18n.t :"double_ball.red_1" %></th>
           <th><%= I18n.t :"double_ball.red_2" %></th>
           <th><%= I18n.t :"double_ball.red_3" %></th>

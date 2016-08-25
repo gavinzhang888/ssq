@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160823151513) do
+ActiveRecord::Schema.define(version: 20160825131836) do
 
   create_table "api_v1_clients", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -41,7 +41,6 @@ ActiveRecord::Schema.define(version: 20160823151513) do
   create_table "double_balls", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "number"
     t.datetime "date"
-    t.integer  "week_number_id"
     t.integer  "red_1"
     t.integer  "red_2"
     t.integer  "red_3"
@@ -49,27 +48,29 @@ ActiveRecord::Schema.define(version: 20160823151513) do
     t.integer  "red_5"
     t.integer  "red_6"
     t.integer  "blue"
-    t.decimal  "amount",         precision: 30, scale: 2, default: "0.0"
-    t.integer  "grade_1",                                 default: 0
-    t.decimal  "amount_1",       precision: 30, scale: 2, default: "0.0"
-    t.integer  "grade_2",                                 default: 0
-    t.decimal  "amount_2",       precision: 30, scale: 2, default: "0.0"
-    t.integer  "grade_3",                                 default: 0
-    t.decimal  "amount_3",       precision: 30, scale: 2, default: "0.0"
-    t.integer  "grade_4",                                 default: 0
-    t.decimal  "amount_4",       precision: 30, scale: 2, default: "0.0"
-    t.integer  "grade_5",                                 default: 0
-    t.decimal  "amount_5",       precision: 30, scale: 2, default: "0.0"
-    t.integer  "grade_6",                                 default: 0
-    t.decimal  "amount_6",       precision: 30, scale: 2, default: "0.0"
-    t.integer  "odd",                                     default: 0
-    t.integer  "prime",                                   default: 0
-    t.integer  "red_total",                               default: 0
-    t.integer  "total",                                   default: 0
+    t.integer  "all_count",                            default: 0
+    t.decimal  "amount",      precision: 30, scale: 2, default: "0.0"
+    t.integer  "grade_1",                              default: 0
+    t.decimal  "amount_1",    precision: 30, scale: 2, default: "0.0"
+    t.integer  "grade_2",                              default: 0
+    t.decimal  "amount_2",    precision: 30, scale: 2, default: "0.0"
+    t.integer  "grade_3",                              default: 0
+    t.decimal  "amount_3",    precision: 30, scale: 2, default: "0.0"
+    t.integer  "grade_4",                              default: 0
+    t.decimal  "amount_4",    precision: 30, scale: 2, default: "0.0"
+    t.integer  "grade_5",                              default: 0
+    t.decimal  "amount_5",    precision: 30, scale: 2, default: "0.0"
+    t.integer  "grade_6",                              default: 0
+    t.decimal  "amount_6",    precision: 30, scale: 2, default: "0.0"
+    t.integer  "odd",                                  default: 0
+    t.integer  "prime",                                default: 0
+    t.integer  "red_total",                            default: 0
+    t.integer  "total",                                default: 0
+    t.integer  "week_number"
     t.integer  "creator_id"
     t.datetime "deleted_at"
-    t.datetime "created_at",                                              null: false
-    t.datetime "updated_at",                                              null: false
+    t.datetime "created_at",                                           null: false
+    t.datetime "updated_at",                                           null: false
     t.index ["creator_id"], name: "index_double_balls_on_creator_id", using: :btree
   end
 
@@ -98,6 +99,42 @@ ActiveRecord::Schema.define(version: 20160823151513) do
     t.integer  "level",                    default: 0
     t.index ["creator_id"], name: "index_notifications_on_creator_id", using: :btree
     t.index ["user_id"], name: "index_notifications_on_user_id", using: :btree
+  end
+
+  create_table "prize_balls", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "number"
+    t.datetime "date"
+    t.integer  "red_1"
+    t.integer  "red_2"
+    t.integer  "red_3"
+    t.integer  "red_4"
+    t.integer  "red_5"
+    t.integer  "red_6"
+    t.integer  "blue"
+    t.integer  "all_count",                            default: 0
+    t.decimal  "amount",      precision: 30, scale: 2, default: "0.0"
+    t.integer  "grade_1",                              default: 0
+    t.decimal  "amount_1",    precision: 30, scale: 2, default: "0.0"
+    t.integer  "grade_2",                              default: 0
+    t.decimal  "amount_2",    precision: 30, scale: 2, default: "0.0"
+    t.integer  "grade_3",                              default: 0
+    t.decimal  "amount_3",    precision: 30, scale: 2, default: "0.0"
+    t.integer  "grade_4",                              default: 0
+    t.decimal  "amount_4",    precision: 30, scale: 2, default: "0.0"
+    t.integer  "grade_5",                              default: 0
+    t.decimal  "amount_5",    precision: 30, scale: 2, default: "0.0"
+    t.integer  "grade_6",                              default: 0
+    t.decimal  "amount_6",    precision: 30, scale: 2, default: "0.0"
+    t.integer  "odd",                                  default: 0
+    t.integer  "prime",                                default: 0
+    t.integer  "red_total",                            default: 0
+    t.integer  "total",                                default: 0
+    t.integer  "week_number"
+    t.integer  "creator_id"
+    t.datetime "deleted_at"
+    t.datetime "created_at",                                           null: false
+    t.datetime "updated_at",                                           null: false
+    t.index ["creator_id"], name: "index_prize_balls_on_creator_id", using: :btree
   end
 
   create_table "properties", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

@@ -48,12 +48,16 @@
 					<table class="table table-bordered table-cus table-show" ng-init="double_ballInit()">
 						<tr>
 							<th><%= I18n.t :"double_ball.number" %></th>
-							<td colspan="3">
+							<td>
 								{{double_ball.number}}
+							</td>
+							<th><%= I18n.t :"double_ball.all_count" %></th>
+							<td>
+								{{double_ball.all_count}}
 							</td>
 						</tr>
 						<tr>
-							<th><%= I18n.t :"double_ball.week_number_id" %></th>
+							<th><%= I18n.t :"double_ball.week_number" %></th>
 							<td>
 								{{double_ball.week_number}}
 							</td>

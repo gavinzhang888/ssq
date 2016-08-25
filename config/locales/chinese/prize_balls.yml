@@ -1,5 +1,5 @@
 zh-CN:
-  double_ball:
+  prize_ball:
     modelname: 双色球
     formname: 双色球
     number: 期数
@@ -31,9 +31,9 @@ zh-CN:
     odd: 奇数
     prime: 质数
     red_total: 红和
-    total: 和
     all_count: 投注总数
+    total: 和
 
   activerecord:
     attributes:
-      api/v1/double_ball:
+      api/v1/prize_ball:
