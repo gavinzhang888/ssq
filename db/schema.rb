@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20160823151513) do
   create_table "double_balls", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "number"
     t.datetime "date"
+    t.integer  "week_number_id"
     t.integer  "red_1"
     t.integer  "red_2"
     t.integer  "red_3"
@@ -48,23 +49,27 @@ ActiveRecord::Schema.define(version: 20160823151513) do
     t.integer  "red_5"
     t.integer  "red_6"
     t.integer  "blue"
-    t.decimal  "amount",     precision: 30, scale: 2, default: "0.0"
-    t.integer  "grade_1",                             default: 0
-    t.decimal  "amount_1",   precision: 30, scale: 2, default: "0.0"
-    t.integer  "grade_2",                             default: 0
-    t.decimal  "amount_2",   precision: 30, scale: 2, default: "0.0"
-    t.integer  "grade_3",                             default: 0
-    t.decimal  "amount_3",   precision: 30, scale: 2, default: "0.0"
-    t.integer  "grade_4",                             default: 0
-    t.decimal  "amount_4",   precision: 30, scale: 2, default: "0.0"
-    t.integer  "grade_5",                             default: 0
-    t.decimal  "amount_5",   precision: 30, scale: 2, default: "0.0"
-    t.integer  "grade_6",                             default: 0
-    t.decimal  "amount_6",   precision: 30, scale: 2, default: "0.0"
+    t.decimal  "amount",         precision: 30, scale: 2, default: "0.0"
+    t.integer  "grade_1",                                 default: 0
+    t.decimal  "amount_1",       precision: 30, scale: 2, default: "0.0"
+    t.integer  "grade_2",                                 default: 0
+    t.decimal  "amount_2",       precision: 30, scale: 2, default: "0.0"
+    t.integer  "grade_3",                                 default: 0
+    t.decimal  "amount_3",       precision: 30, scale: 2, default: "0.0"
+    t.integer  "grade_4",                                 default: 0
+    t.decimal  "amount_4",       precision: 30, scale: 2, default: "0.0"
+    t.integer  "grade_5",                                 default: 0
+    t.decimal  "amount_5",       precision: 30, scale: 2, default: "0.0"
+    t.integer  "grade_6",                                 default: 0
+    t.decimal  "amount_6",       precision: 30, scale: 2, default: "0.0"
+    t.integer  "odd",                                     default: 0
+    t.integer  "prime",                                   default: 0
+    t.integer  "red_total",                               default: 0
+    t.integer  "total",                                   default: 0
     t.integer  "creator_id"
     t.datetime "deleted_at"
-    t.datetime "created_at",                                          null: false
-    t.datetime "updated_at",                                          null: false
+    t.datetime "created_at",                                              null: false
+    t.datetime "updated_at",                                              null: false
     t.index ["creator_id"], name: "index_double_balls_on_creator_id", using: :btree
   end
 

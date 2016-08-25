@@ -20,8 +20,7 @@ class UserView < ApplicationRecord
 
   DefaultViews = {
     "Api::V1::Client" => [:name, :category_id, :phone, :email, :address, :created_at],
-    "Notification" => [:content, :link, :readed, :category, :level, :creator_id, :created_at],
-    "Notification" => [:number, :date, :created_at]
+    "Notification" => [:content, :link, :readed, :category, :level, :creator_id, :created_at]
   }
 
 

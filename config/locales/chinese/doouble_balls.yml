@@ -27,6 +27,11 @@ zh-CN:
     created_at: 创建于
     updated_at: 更新于
     creator: 创建人
+    week_number_id: 周
+    odd: 奇数
+    prime: 质数
+    red_total: 红和
+    total: 和
 
   activerecord:
     attributes:

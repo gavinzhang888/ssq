@@ -14,13 +14,16 @@ Api::V1::Client::Category.create(name: "新客户")
 Api::V1::Client::Category.create(name: "其他客户")
 
 Api::V1::Client.delete_all
-1000.times do |index|
+25.times do |index|
   Api::V1::Client.create!(name:"客户#{index}",email:"netfarmer#{index}@netfarmer.com.cn",phone:[*(0..9)].shuffle[0..9].join,address:"地址#{index}",remark:"备注#{index}",category_id:Api::V1::Client::Category.all.pluck(:id).sample, creator_id: 1)
 end
 puts "clients create over"
 
 Api::V1::Opportunity.delete_all
-1000.times do |index|
+32.times do |index|
   Api::V1::Opportunity.create!(code:[*(0..9)].shuffle[0..6].join,name:"商机#{index}",client_id:(1..20).to_a.sample,status_id:(1..5).to_a.sample,remark:"备注#{index}", creator_id: 1,amount: Random.rand(10000.00...1000000.00).round(2))
 end
 puts "opportunities creator over"
+
+dd = DoubleBall.new
+dd.insert_data

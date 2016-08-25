@@ -44,6 +44,7 @@
           <th><input type="checkbox" ng-model="select_datas[0]" ng-click="select_items(double_balls)"/></th>
           <th><%= I18n.t :"double_ball.number" %></th>
           <th><%= I18n.t :"double_ball.date" %></th>
+          <th><%= I18n.t :"double_ball.week_number_id" %></th>
           <th><%= I18n.t :"double_ball.red_1" %></th>
           <th><%= I18n.t :"double_ball.red_2" %></th>
           <th><%= I18n.t :"double_ball.red_3" %></th>
@@ -51,6 +52,10 @@
           <th><%= I18n.t :"double_ball.red_5" %></th>
           <th><%= I18n.t :"double_ball.red_6" %></th>
           <th><%= I18n.t :"double_ball.blue" %></th>
+          <th><%= I18n.t :"double_ball.odd" %></th>
+          <th><%= I18n.t :"double_ball.prime" %></th>
+          <th><%= I18n.t :"double_ball.red_total" %></th>
+          <th><%= I18n.t :"double_ball.total" %></th>
           <th><%= I18n.t :"double_ball.created_at" %></th>
         </tr>
       </thead>
@@ -61,6 +66,7 @@
          <td><input type="checkbox" ng-model="select_datas[double_ball.id]" ng-click="select_item(double_balls)" /></td>
          <td><a ng-href="/double_balls/{{double_ball.id}}">{{ double_ball.number }}</a></td>
          <td>{{ double_ball.date }}</td>
+         <td>{{ double_ball.week_number }}</td>
          <td>{{ double_ball.red_1 }}</td>
          <td>{{ double_ball.red_2 }}</td>
          <td>{{ double_ball.red_3 }}</td>
@@ -68,6 +74,10 @@
          <td>{{ double_ball.red_5 }}</td>
          <td>{{ double_ball.red_6 }}</td>
          <td>{{ double_ball.blue }}</td>
+         <td>{{ double_ball.odd }}</td>
+         <td>{{ double_ball.prime }}</td>
+         <td>{{ double_ball.red_total }}</td>
+         <td>{{ double_ball.total }}</td>
          <td>{{ double_ball.created_at }}</td>
        </tr>
       </tbody>

@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
 
   resources :double_balls, defaults: { format: 'json' }, path: 'api/v1/double_balls'
+  resources :reports, defaults: { format: 'json' }, path: 'api/v1/reports' do
+    collection do
+      get 'line', defaults: { format: 'json' }
+    end
+  end
+
   # get 'notifications/index'
 
   mount ActionCable.server => '/cable'
@@ -27,7 +33,7 @@ Rails.application.routes.draw do
 
   root 'templates#index'
 
-  controllers = /(clients)|(double_balls)|(opportunities)|(users)|(roles)|(notifications)/
+  controllers = /(clients)|(double_balls)|(reports)|(opportunities)|(users)|(roles)|(notifications)/
   match ":path" => 'templates#index', via: :get, constraints: {
     path: controllers
   }

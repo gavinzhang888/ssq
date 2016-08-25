@@ -24,6 +24,7 @@
   $routeProvider.when '/double_balls/new', templateUrl: '/templates/double_balls/new.html', controller: 'DoubleBallsCtrl'
   $routeProvider.when '/double_balls/:id', templateUrl: '/templates/double_balls/show.html', controller: 'DoubleBallsCtrl'
 
+  $routeProvider.when '/reports/line', templateUrl: '/templates/reports/line.html', controller: 'LinesCtrl'
   $routeProvider.when '/properties', templateUrl: '/templates/properties/index.html', controller: 'PropertiesCtrl'
 
   $routeProvider.when '/notifications', templateUrl: '/templates/notifications/index.html', controller: 'NotificationsCtrl'

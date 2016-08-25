@@ -3,6 +3,7 @@ class CreateDoubleBalls < ActiveRecord::Migration[5.0]
     create_table :double_balls do |t|
       t.string :number
       t.datetime :date
+      t.integer :week_number_id
       t.integer :red_1
       t.integer :red_2
       t.integer :red_3
@@ -23,6 +24,10 @@ class CreateDoubleBalls < ActiveRecord::Migration[5.0]
       t.decimal :amount_5, precision: 30, scale: 2, default: 0
       t.integer :grade_6, default: 0
       t.decimal :amount_6, precision: 30, scale: 2, default: 0
+      t.integer :odd, default: 0
+      t.integer :prime, default: 0
+      t.integer :red_total, default: 0
+      t.integer :total, default: 0
 
       t.references :creator, index: true
       t.datetime :deleted_at

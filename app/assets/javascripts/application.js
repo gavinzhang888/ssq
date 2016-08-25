@@ -26,11 +26,6 @@
 //= require x-editable/dist/angular-xeditable/js/xeditable.min
 //= require app
 //= require routes
-//= require controllers/root_controller
-//= require controllers/properties_controller
-//= require controllers/relationship_controller
-//= require controllers/user_views_controller
-//= require controllers/notifications_controller
-//= require controllers/clients_controller
-//= require controllers/opportunities_controller
+//= require_tree ./controllers
 //= require cable
+//= require_tree ./module
