@@ -29,6 +29,7 @@
   $routeProvider.when '/prize_balls/new', templateUrl: '/templates/prize_balls/new.html', controller: 'PrizeBallsCtrl'
   $routeProvider.when '/prize_balls/:id', templateUrl: '/templates/prize_balls/show.html', controller: 'PrizeBallsCtrl'
 
+  $routeProvider.when '/hreports', templateUrl: '/templates/hreports/index.html', controller: 'HreportsCtrl'
   $routeProvider.when '/reports', templateUrl: '/templates/reports/index.html', controller: 'ReportsCtrl'
   $routeProvider.when '/properties', templateUrl: '/templates/properties/index.html', controller: 'PropertiesCtrl'
 
