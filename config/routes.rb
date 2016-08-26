@@ -2,11 +2,7 @@ Rails.application.routes.draw do
 
   resources :prize_balls, defaults: { format: 'json' }, path: 'api/v1/prize_balls'
   resources :double_balls, defaults: { format: 'json' }, path: 'api/v1/double_balls'
-  resources :reports, defaults: { format: 'json' }, path: 'api/v1/reports' do
-    collection do
-      get 'line', defaults: { format: 'json' }
-    end
-  end
+  resources :reports, defaults: { format: 'json' }, path: 'api/v1/reports'
 
   # get 'notifications/index'
 

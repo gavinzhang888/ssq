@@ -7,7 +7,8 @@
   "restangular",
   "ui.bootstrap",
   "xeditable",
-  "ui.sortable"
+  "ui.sortable",
+  "chart.js"
 ])
 
 @app.config(['$httpProvider', ($httpProvider) ->

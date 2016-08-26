@@ -24,6 +24,9 @@
 //= require eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min
 //--- xEditable
 //= require x-editable/dist/angular-xeditable/js/xeditable.min
+//= require node_modules/angular-chart.js/node_modules/chart.js/dist/Chart.min
+//= require node_modules/angular-chart.js/dist/angular-chart.min.js
+
 //= require app
 //= require routes
 //= require_tree ./controllers

@@ -1,3 +1,0 @@
-class LinesController < ApplicationController
-
-end
