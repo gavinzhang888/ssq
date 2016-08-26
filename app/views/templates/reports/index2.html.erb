@@ -14,11 +14,8 @@
         <a href="javascript:void(0);" ng-click="refreshPage()" class="btn btn-default">
             <i class="fa fa-refresh"></i>
         </a>
-        <a href="javascript:void(0);" ng-click="setClassName('prizes')" class="btn btn-default">
-          历史记录
-        </a>
-        <a href="javascript:void(0);" ng-click="setClassName('double_balls')" class="btn btn-default">
-          预测
+        <a href="javascript:void(0);" print-div="#print-area" class="btn btn-default">
+            <i class="fa fa-print"></i>
         </a>
         <button class="btn btn-default" data-toggle="collapse" data-target="#table-search" data-animate="" data-play="bounceInUp">
             <i class="fa fa-search"></i>
@@ -105,42 +102,49 @@
                 </tr>
             </tbody>
         </table>
-        <h2 style="text-align:center;">和值走势图</h2>
-        <canvas class="chart chart-line" chart-data="data" chart-labels="labels" chart-series="series" chart-legend="true"></canvas>
-        <h2 style="text-align:center;">奇数偶数分布图</h2>
-        <canvas class="chart chart-line" chart-data="data2" chart-labels="labels" chart-series="series2" chart-legend="true"></canvas>
-        <h2 style="text-align:center;">质数合数分布图</h2>
-        <canvas class="chart chart-line" chart-data="data3" chart-labels="labels" chart-series="series3" chart-legend="true"></canvas>
-        <h2 style="text-align:center;">大小号分布图(大号>=16)</h2>
-        <canvas class="chart chart-line" chart-data="data6" chart-labels="labels" chart-series="series6" chart-legend="true"></canvas>
-        <h2 style="text-align:center;">奇数质数分布图</h2>
-        <canvas class="chart chart-line" chart-data="data4" chart-labels="labels" chart-series="series4" chart-legend="true"></canvas>
-        <h2 style="text-align:center;">奇数合数分布图</h2>
-        <canvas class="chart chart-line" chart-data="data7" chart-labels="labels" chart-series="series7" chart-legend="true"></canvas>
-        <h2 style="text-align:center;">奇数大号分布图</h2>
-        <canvas class="chart chart-line" chart-data="data8" chart-labels="labels" chart-series="series8" chart-legend="true"></canvas>
-        <h2 style="text-align:center;">奇数小号分布图</h2>
-        <canvas class="chart chart-line" chart-data="data9" chart-labels="labels" chart-series="series9" chart-legend="true"></canvas>
-        <h2 style="text-align:center;">质数大号分布图</h2>
-        <canvas class="chart chart-line" chart-data="data10" chart-labels="labels" chart-series="series10" chart-legend="true"></canvas>
-        <h2 style="text-align:center;">质数小号分布图</h2>
-        <canvas class="chart chart-line" chart-data="data11" chart-labels="labels" chart-series="series11" chart-legend="true"></canvas>
-        <h2 style="text-align:center;">合数大号分布图</h2>
-        <canvas class="chart chart-line" chart-data="data12" chart-labels="labels" chart-series="series12" chart-legend="true"></canvas>
-        <h2 style="text-align:center;">合数小号分布图</h2>
-        <canvas class="chart chart-line" chart-data="data13" chart-labels="labels" chart-series="series13" chart-legend="true"></canvas>
-        <h2 style="text-align:center;">偶数质数分布图</h2>
-        <canvas class="chart chart-line" chart-data="data14" chart-labels="labels" chart-series="series14" chart-legend="true"></canvas>
-        <h2 style="text-align:center;">偶数合数分布图</h2>
-        <canvas class="chart chart-line" chart-data="data15" chart-labels="labels" chart-series="series15" chart-legend="true"></canvas>
-        <h2 style="text-align:center;">偶数大号分布图</h2>
-        <canvas class="chart chart-line" chart-data="data16" chart-labels="labels" chart-series="series16" chart-legend="true"></canvas>
-        <h2 style="text-align:center;">偶数小号分布图</h2>
-        <canvas class="chart chart-line" chart-data="data17" chart-labels="labels" chart-series="series17" chart-legend="true"></canvas>
-        <h2 style="text-align:center;">篮球走势图</h2>
-        <canvas class="chart chart-line" chart-data="data5" chart-labels="labels" chart-series="series5" chart-legend="true"></canvas>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <h2 style="text-align:center;">和值走势图</h2>
+                    <canvas class="chart chart-line" chart-data="data" chart-labels="labels" chart-series="series" chart-legend="true"></canvas>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <h2 style="text-align:center;">奇数偶数分布图</h2>
+                    <canvas class="chart chart-line" chart-data="data2" chart-labels="labels" chart-series="series2" chart-legend="true"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <h2 style="text-align:center;">质数合数分布图</h2>
+                    <canvas class="chart chart-line" chart-data="data3" chart-labels="labels" chart-series="series3" chart-legend="true"></canvas>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <h2 style="text-align:center;">大小号分布图(大号>=16)</h2>
+                    <canvas class="chart chart-line" chart-data="data6" chart-labels="labels" chart-series="series6" chart-legend="true"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+              <div class="form-group">
+                  <h2 style="text-align:center;">奇数质数分布图</h2>
+                  <canvas class="chart chart-line" chart-data="data4" chart-labels="labels" chart-series="series4" chart-legend="true"></canvas>
+              </div>
+          </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <h2 style="text-align:center;">篮球走势图</h2>
+                    <canvas class="chart chart-line" chart-data="data5" chart-labels="labels" chart-series="series5" chart-legend="true"></canvas>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
-<div class="action-bar">
-    <div class="willPaginate" data-params="willPaginateCollection" data-on-click="getPage" data-config="willPaginateConfig" ng-if="double_balls.meta.total > double_balls.meta.perpage"></div>
-</div>
+    <div class="action-bar">
+        <div class="willPaginate" data-params="willPaginateCollection" data-on-click="getPage" data-config="willPaginateConfig" ng-if="double_balls.meta.total > double_balls.meta.perpage"></div>
+    </div>

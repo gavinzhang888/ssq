@@ -29,6 +29,7 @@ class CreatePrizeBalls < ActiveRecord::Migration[5.0]
       t.integer :red_total, default: 0
       t.integer :total, default: 0
       t.integer :week_number
+      t.integer :large, default: 0
 
       t.references :creator, index: true
       t.datetime :deleted_at

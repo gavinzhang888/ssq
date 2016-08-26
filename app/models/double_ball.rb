@@ -58,6 +58,14 @@ class DoubleBall < ApplicationRecord
     x += 1 if self.red_6 % 2 == 1
     self.update_column(:odd, x) if self.odd != x
     x = 0
+    x += 1 if self.red_1 > 16
+    x += 1 if self.red_2 > 16
+    x += 1 if self.red_3 > 16
+    x += 1 if self.red_4 > 16
+    x += 1 if self.red_5 > 16
+    x += 1 if self.red_6 > 16
+    self.update_column(:large, x) if self.large != x
+    x = 0
     x += 1 if primes.include?(self.red_1)
     x += 1 if primes.include?(self.red_2)
     x += 1 if primes.include?(self.red_3)

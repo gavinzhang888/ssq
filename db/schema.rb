@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 20160825131836) do
     t.integer  "red_total",                            default: 0
     t.integer  "total",                                default: 0
     t.integer  "week_number"
+    t.integer  "large",                                default: 0
     t.integer  "creator_id"
     t.datetime "deleted_at"
     t.datetime "created_at",                                           null: false
@@ -130,6 +131,7 @@ ActiveRecord::Schema.define(version: 20160825131836) do
     t.integer  "red_total",                            default: 0
     t.integer  "total",                                default: 0
     t.integer  "week_number"
+    t.integer  "large",                                default: 0
     t.integer  "creator_id"
     t.datetime "deleted_at"
     t.datetime "created_at",                                           null: false

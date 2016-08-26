@@ -40,7 +40,7 @@
 class PrizeBallSerializer < BaseSerializer
   attributes :id, :number, :date, :week_number, :red_1, :red_2, :red_3, :red_4, :red_5, :red_6, :blue, :amount, :grade_1,
     :amount_1, :grade_2, :amount_2, :grade_3, :amount_3, :grade_4, :amount_4, :grade_5, :amount_5, :grade_6, :amount_6,
-    :odd, :prime, :red_total, :total, :all_count
+    :odd, :prime, :red_total, :total, :all_count, :large
   def date
     object.date.strftime("%F") rescue nil
   end

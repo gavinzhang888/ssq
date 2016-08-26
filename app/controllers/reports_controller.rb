@@ -5,17 +5,38 @@ class ReportsController < ApplicationController
     @red_totals = []
     @totals =[]
     @odds = []
+    @evens = []
     @primes = []
+    @composites = []
+    @blues = []
+    @larges = []
+    @smalls = []
     @double_balls.each do |double_ball|
-      @labels.push(double_ball.number)
+      week_number = self.get_week_number(double_ball.week_number)
+      @labels.push("#{double_ball.number}/#{double_ball.date.strftime("%F")}/#{week_number}")
       @red_totals.push(double_ball.red_total)
       @totals.push(double_ball.total)
       @odds.push(double_ball.odd)
+      @evens.push(6 - double_ball.odd)
       @primes.push(double_ball.prime)
+      @composites.push(6 - double_ball.prime)
+      @blues.push(double_ball.blue)
+      @larges.push(double_ball.large)
+      @smalls.push(6 - double_ball.large)
     end
-    # @labels = @double_balls.pluck(:number)
-    # @red_totals = @double_balls.pluck(:red_total)
-    # @totals = @double_balls.pluck(:total)
-    render json: @double_balls, meta: { total: @double_balls.total_entries, perpage: @double_balls.per_page ,statistics_results: @double_balls.statistics_results, labels: @labels, red_totals: @red_totals, totals: @totals, odds: @odds, primes: @primes}
+    render json: @double_balls, meta: { total: @double_balls.total_entries, perpage: @double_balls.per_page ,
+      statistics_results: @double_balls.statistics_results, labels: @labels, red_totals: @red_totals, totals: @totals,
+      odds: @odds, primes: @primes, blues: @blues, evens: @evens, composites: @composites, larges: @larges, smalls: @smalls}
+  end
+  def get_week_number(week_number)
+    case week_number
+    when 0 then "周日"
+    when 1 then "周一"
+    when 2 then "周二"
+    when 3 then "周三"
+    when 4 then "周四"
+    when 5 then "周五"
+    when 6 then "周六"
+    end
   end
 end

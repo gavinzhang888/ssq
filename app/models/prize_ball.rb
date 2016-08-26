@@ -40,6 +40,11 @@
 class PrizeBall < ApplicationRecord
   belongs_to :creator, class_name: "::User", foreign_key: "creator_id"
   after_save :updat_info
+  def self.branch_update
+    PrizeBall.all.each do |prize_ball|
+      prize_ball.save
+    end
+  end
   def updat_info
     primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31]
     sum = self.red_1 + self.red_2 + self.red_3 + self.red_4 + self.red_5 + self.red_6
@@ -56,6 +61,14 @@ class PrizeBall < ApplicationRecord
     x += 1 if self.red_5 % 2 == 1
     x += 1 if self.red_6 % 2 == 1
     self.update_column(:odd, x) if self.odd != x
+    x = 0
+    x += 1 if self.red_1 > 16
+    x += 1 if self.red_2 > 16
+    x += 1 if self.red_3 > 16
+    x += 1 if self.red_4 > 16
+    x += 1 if self.red_5 > 16
+    x += 1 if self.red_6 > 16
+    self.update_column(:large, x) if self.large != x
     x = 0
     x += 1 if primes.include?(self.red_1)
     x += 1 if primes.include?(self.red_2)

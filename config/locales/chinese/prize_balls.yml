@@ -33,6 +33,7 @@ zh-CN:
     red_total: 红和
     all_count: 投注总数
     total: 和
+    large: 大号
 
   activerecord:
     attributes:

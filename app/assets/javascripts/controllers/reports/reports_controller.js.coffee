@@ -1,9 +1,8 @@
 @app.controller "ReportsCtrl",["$scope", "DoubleBall", "Restangular", "$rootScope", "$location", "$routeParams", ($scope, DoubleBall, Restangular, $rootScope, $location, $routeParams) ->
 
-  # $scope.setPerpage = (num) ->
-  #   $location.search(
-  #     per_page: num
-  #   )
+  $scope.setClassName = (the_class_name) ->
+    $scope.the_class_name = the_class_name
+    $scope.getData()
 
   # index
   $scope.paginate = {}
@@ -19,14 +18,89 @@
       $scope.double_balls = res
       $scope.labels = res.meta["labels"]
       $scope.series = ['红和', '总和']
-      $scope.series2 = ['奇数', '质数']
+      $scope.series2 = ['奇数', '偶数']
+      $scope.series3 = ['质数', '合数']
+      $scope.series4 = ['奇数', '质数']
+      $scope.series5 = ['篮球', '篮球']
+      $scope.series6 = ['大号', '小号']
+      $scope.series7 = ['奇数', '合数']
+      $scope.series8 = ['奇数', '大号']
+      $scope.series9 = ['奇数', '小号']
+      $scope.series10 = ['质数', '大号']
+      $scope.series11 = ['质数', '小号']
+      $scope.series12 = ['合数', '大号']
+      $scope.series13 = ['合数', '小号']
+      $scope.series14 = ['偶数', '质数']
+      $scope.series15 = ['偶数', '合数']
+      $scope.series16 = ['偶数', '大号']
+      $scope.series17 = ['偶数', '小号']
       $scope.data = [
         res.meta["red_totals"],
         res.meta["totals"]
       ]
       $scope.data2 = [
         res.meta["odds"],
+        res.meta["evens"]
+      ]
+      $scope.data3 = [
+        res.meta["primes"],
+        res.meta["composites"]
+      ]
+      $scope.data4 = [
+        res.meta["odds"],
         res.meta["primes"]
+      ]
+      $scope.data5 = [
+        res.meta["blues"],
+        res.meta["blues"]
+      ]
+      $scope.data6 = [
+        res.meta["larges"],
+        res.meta["smalls"]
+      ]
+      $scope.data7 = [
+        res.meta["odds"],
+        res.meta["composites"]
+      ]
+      $scope.data8 = [
+        res.meta["odds"],
+        res.meta["larges"]
+      ]
+      $scope.data9 = [
+        res.meta["odds"],
+        res.meta["smalls"]
+      ]
+      $scope.data10 = [
+        res.meta["primes"],
+        res.meta["larges"]
+      ]
+      $scope.data11 = [
+        res.meta["primes"],
+        res.meta["smalls"]
+      ]
+      $scope.data12 = [
+        res.meta["composites"],
+        res.meta["larges"]
+      ]
+      $scope.data13 = [
+        res.meta["composites"],
+        res.meta["smalls"]
+      ]
+      $scope.data14 = [
+        res.meta["evens"],
+        res.meta["primes"]
+      ]
+      $scope.data15 = [
+        res.meta["evens"],
+        res.meta["composites"]
+      ]
+      $scope.data16 = [
+        res.meta["evens"],
+        res.meta["larges"]
+      ]
+      $scope.data17 = [
+        res.meta["evens"],
+        res.meta["smalls"]
       ]
       if res.meta
         $scope.paginate.per_page = res.meta.perpage
