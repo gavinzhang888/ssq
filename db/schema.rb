@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 20160825131836) do
   end
 
   create_table "double_balls", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "number"
+    t.integer  "number"
     t.datetime "date"
     t.integer  "red_1"
     t.integer  "red_2"
@@ -102,7 +102,7 @@ ActiveRecord::Schema.define(version: 20160825131836) do
   end
 
   create_table "prize_balls", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "number"
+    t.integer  "number"
     t.datetime "date"
     t.integer  "red_1"
     t.integer  "red_2"

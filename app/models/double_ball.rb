@@ -3,7 +3,7 @@
 # Table name: double_balls
 #
 #  id          :integer          not null, primary key
-#  number      :string(255)
+#  number      :integer
 #  date        :datetime
 #  red_1       :integer
 #  red_2       :integer

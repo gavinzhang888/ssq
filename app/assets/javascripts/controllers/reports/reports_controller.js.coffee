@@ -1,4 +1,10 @@
 @app.controller "ReportsCtrl",["$scope", "DoubleBall", "Restangular", "$rootScope", "$location", "$routeParams", ($scope, DoubleBall, Restangular, $rootScope, $location, $routeParams) ->
+
+  # $scope.setPerpage = (num) ->
+  #   $location.search(
+  #     per_page: num
+  #   )
+
   # index
   $scope.paginate = {}
   $scope.searchReportData = ( options = {}) ->
@@ -13,9 +19,14 @@
       $scope.double_balls = res
       $scope.labels = res.meta["labels"]
       $scope.series = ['红和', '总和']
+      $scope.series2 = ['奇数', '质数']
       $scope.data = [
         res.meta["red_totals"],
         res.meta["totals"]
+      ]
+      $scope.data2 = [
+        res.meta["odds"],
+        res.meta["primes"]
       ]
       if res.meta
         $scope.paginate.per_page = res.meta.perpage

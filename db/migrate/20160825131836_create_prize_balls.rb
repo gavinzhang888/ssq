@@ -1,7 +1,7 @@
 class CreatePrizeBalls < ActiveRecord::Migration[5.0]
   def change
     create_table :prize_balls do |t|
-      t.string :number
+      t.integer :number
       t.datetime :date
       t.integer :red_1
       t.integer :red_2
