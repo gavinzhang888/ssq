@@ -1,0 +1,39 @@
+<div class="panel well table-search slide-down" ng-show="search.table_search">
+  <div class="panel-body">
+    <fieldset>
+      <legend>高级搜索</legend>
+      <div class="row search-line">
+        <label class="col-sm-3 control-label form-label">关键词</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control input-width" ng-init="search.name_or_number.option = 'cont'" ng-model="search.name_or_number.value" placeholder="请输入名称/编号"/>
+        </div>
+      </div>
+      <div class="row search-line">
+        <label class="col-sm-3 control-label form-label"><%=I18n.t :"client_info.created_at" %></label>
+        <div class="col-sm-9">
+          <div class="row input-width">
+            <div class="col-md-6">
+              <input type="text" ng-init="search.created_at_gteq.option = 'range'" ng-model="search.created_at_gteq.value" date-time-picker class="form-control input-width" placeholder="起始于">
+            </div>
+            <div class="col-md-6">
+              <input type="text" ng-init="search.created_at_lteq.option = 'range'" ng-model="search.created_at_lteq.value" date-time-picker class="form-control input-width" placeholder="结束于">
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="row search-line">
+        <label class="col-sm-3 control-label form-label">项目来源</label>
+        <div class="col-sm-9" ng-init="search.source_id.option = 'in'">
+          <label class="checkbox-inline c-checkbox" ng-repeat="source in sources">
+            <input type="checkbox" ng-model="search.source_id.value[source.id]"/>
+            <span class="fa fa-check"></span>{{source.name}}
+          </label>
+        </div>
+      </div> -->
+    </fieldset>
+    <fieldset>
+      <button class="btn btn-success" ng-click="tableSearch('client_infos')">搜索</button>
+      <button class="btn btn-default" ng-click="search.table_search = !search.table_search">收起</button>
+    </fieldset>
+  </div>
+</div>

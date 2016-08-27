@@ -6,6 +6,42 @@
         <span ng-bind="double_balls.meta.total"></span>
         <%= I18n.t :"page.static.unit" %></li>
 </ol>
+<div class="row">
+  <div class="col-md-6">
+    筛选：
+    <div class="btn-group mb-sm">
+      <button type="button" data-toggle="dropdown" class="btn dropdown-toggle btn-default">{{search.year || '年份'}}
+        <span class="caret"></span>
+      </button>
+      <ul role="menu" class="dropdown-menu">
+        <li>
+          <a href="javascript:;" ng-click="selectFilter('year', '')">年份</a>
+        </li>
+        <li class="divider"></li>
+        <li ng-repeat="year in years">
+          <a href="javascript:;" ng-click="selectFilter('year', year, year)">{{year}}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="form-group pull-right form-inline">
+      <div class="input-group">
+        <input type="text" ng-model="keyword" style="width:300px;" class="form-control" placeholder="请输入期号" my-enter="searchQuery(keyword)"/>
+        <span class="input-group-btn">
+          <button type="button" class="btn btn-default" ng-click="searchQuery(keyword)">
+            <i class="fa fa-search"></i>
+          </button>
+        </span>
+      </div>
+      <button class="btn btn-default" ng-click="search.table_search = !search.table_search">
+        高级搜索
+      </button>
+    </div>
+  </div>
+</div>
+<div ng-include="'/templates/reports/_search.html'"></div>
+
 <div class="action-bar">
     <div class="action-btns form-inline">
         <a href="javascript:void(0);" class="btn btn-default" ng-click="show_list=!show_list">

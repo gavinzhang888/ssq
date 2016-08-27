@@ -1,5 +1,11 @@
 class ReportsController < ApplicationController
   def index
+
+    if params[:q].present?
+      if params[:q][:year_in].present?
+        params[:q][:year_in] = params[:q][:year_in].split(",")
+      end
+    end
     @double_balls = DoubleBall.order("number asc").searching(current_user,params)
 
     @red_counts = {}#红球球号 出球次数hash

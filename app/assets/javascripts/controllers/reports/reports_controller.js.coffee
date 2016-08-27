@@ -5,6 +5,8 @@
   $scope.searchReportData = ( options = {}) ->
     $scope.all_red_numbers = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33]
     $scope.all_blue_numbers = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
+    $scope.years = [2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016]
+
     $scope.search = {}
     condition = {}
     if options['page']
@@ -124,6 +126,23 @@
         $scope.paginate.total_entries = 0
 
   $scope.getData = () ->
+    $scope.searchReportData()
+
+  $scope.searchQuery = (keyword) ->
+    $scope.search.number =
+      option: 'cont'
+      value: keyword
+    $scope.searchReportData()
+
+  # 筛选
+  $scope.selectFilter = (obj, key, name) ->
+    $scope.search[obj] =
+      option: "in"
+      value: ""
+      name: name
+    if key
+      eval("$scope.search." + obj + ".value= {" + key + ": true}")
+      console.log $scope,"<<<<<"
     $scope.searchReportData()
 
   # 排序
